@@ -6,6 +6,14 @@ import cookielib, urllib2
 from cookielib import CookieJar
 import datetime
 from bs4 import BeautifulSoup
+import pdb
+from pymongo import MongoClient
+
+client = MongoClient()
+database = client['capstone']
+coll = database['test_news']
+
+
 
 cj = CookieJar()
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
@@ -21,26 +29,26 @@ def main():
             titles = []
             articles = []
             links = re.findall(r'<td.*?<a.*?href="(.*?)".*?</a>.*?</td>',sourceCode)
+            links = list(set(links))
+            links = links[0:1]
             for link in links:
                 the_link = str(link) + '?format=xml'
                 r = urlopen(the_link).read()
                 soup = BeautifulSoup(r)
-                title = soup.find_all('title')
-                content = soup.find_all('content:encoded')
-                content[0].aside.clear()
-                article = content[0].get_text()
-                #print(the_link)
-                topics.append[the_link]
-                titles.append[title]
-                articles.append[article] 
-                #content[0].get_text()
-                #article = content[0]
-        #return topics, titles, articles 
+                titles = soup.find_all('title')
+                contents = soup.find_all('content:encoded')
+            for content in contents:
+                content.aside.clear()
+                article = content.get_text().encode('utf-8')
+                #articles.append(article)
+                print(article)
+            #topics.append(the_link)
+            #titles.append(title)
         except Exception, e:
             print str(e)
 
     except Exception,e:
         print str(e)
-        pass
+    return topics, titles, articles
 
-main()
+topics, titles,articles = main()
