@@ -27,4 +27,5 @@ PROCESS
    d) Gender Detection - in progress
    e) results - not started
 
- 2) Scrape articles for AJC,
+ 2) Scrape articles for AJC - completed
+ 3) Scrape articles for LaTime - completed
