@@ -16,3 +16,15 @@ CODE EXAMPLES
 https://github.com/malev/gender-detector
 http://nbviewer.jupyter.org/gist/nealcaren/5105037
 https://github.com/bbengfort/gender-words-fatale
+
+PROCESS
+
+1) Set up process from data extraction into MongoDB, to topic modeling to gender detection on all articles,
+   to results for Denver Post.
+   a) Scrapy code - X
+   b) MongoDB feed - completed
+   c) Topic Modeling - in progress
+   d) Gender Detection - in progress
+   e) results - not started
+
+ 2) Scrape articles for AJC,
