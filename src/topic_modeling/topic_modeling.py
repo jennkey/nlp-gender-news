@@ -1,23 +1,49 @@
 import numpy as np
 import pandas as pd
+import re
+import pdb
 
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem.porter import PorterStemmer
+#from nltk.stem.wordnet import WordNetLemmatizer
 
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF as NMF_sklearn
+from sklearn.decomposition import LatentDirichletAllocation
 
 from pymongo import MongoClient
 
 client = MongoClient('localhost:27017')
-db = client.practice
+db = client.news
 
 
 # function to read records from mongo db
 def read():
     df = pd.DataFrame(list(db.articles.find()))
     return df
+
+def clean_text(contents):
+    # remove 'by author'
+    contents = contents.str.replace(r"By[^,]*","")
+    #lower case all text
+    contents = contents.str.lower()
+    # change contractions to their long form
+    contents = contents.str.replace(r"what's", "what is ")
+    contents = contents.str.replace(r"what's", "what is ")
+    contents = contents.str.replace(r"\'s", " ")
+    contents = contents.str.replace(r"\'ve", " have ")
+    contents = contents.str.replace(r"can't", "cannot ")
+    contents = contents.str.replace(r"n't", " not ")
+    contents = contents.str.replace(r"i'm", "i am ")
+    contents = contents.str.replace(r"\'re", " are ")
+    contents = contents.str.replace(r"\'d", " would ")
+    contents = contents.str.replace(r"\'ll", " will ")
+
+    #remove punctuation
+    contents = contents.str.replace(r"[^\w\s]", "")
+    return contents
+
 
 def build_text_vectorizer(contents, use_tfidf=True, use_stemmer=False, max_features=None):
     '''
@@ -41,9 +67,16 @@ def build_text_vectorizer(contents, use_tfidf=True, use_stemmer=False, max_featu
         stems = [stem(token) for token in tokens if token not in stop_set]
         return stems
 
-    vectorizer_model = Vectorizer(tokenizer=tokenize, max_features=max_features)
+
+    vectorizer_model = TfidfVectorizer(tokenizer=tokenize, max_features=max_features)
     vectorizer_model.fit(contents)
     vocabulary = np.array(vectorizer_model.get_feature_names())
+
+    # Closure over the vectorizer_model's transform method.
+    def vectorizer(X):
+        return vectorizer_model.transform(X).toarray()
+
+    return vectorizer, vocabulary
 
 
 def hand_label_topics(H, vocabulary):
@@ -85,6 +118,12 @@ def analyze_article(article_index, contents, web_urls, W, hand_labels):
     print
 
 
+def label_articles():
+    for topic in topics:
+        topic_labels.append(hand_labels[topic])
+    #Need to update the mongo db with the topic label_articles
+    # may need to somehow have kept the id field here is some sample code
+    db.Doc.update({"_id": b["_id"]}, {"$set": {"geolocCountry": myGeolocCountry}})
 
 
 def main():
@@ -95,22 +134,42 @@ def main():
 
     #Read data from MongoDB
     df = read()
-
     df['article'] = df['article'].apply(lambda x: ', '.join(x))
-
     contents = df['article']
+
+    contents = clean_text(contents)
 
     # Build our text-to-vector vectorizer, then vectorize our corpus.
     vectorizer, vocabulary = build_text_vectorizer(contents, use_tfidf=True,
                                  use_stemmer=False,
-                                 max_features=5000)
+                                 max_features=500)
 
     X = vectorizer(contents)
 
-    nmf = NMF_sklearn(n_components=7, max_iter=100, random_state=12345, alpha=0.0)
-    W = nmf.fit_transform(df['article'])
+    nmf = NMF_sklearn(n_components=20, max_iter=150, random_state=12345, alpha=0.2)
+    W = nmf.fit_transform(X)
     H = nmf.components_
     print 'reconstruction error:', nmf.reconstruction_err_
+
+    # choose topic for each document
+    topics = np.argmax(W, axis=1)
+
+    # match up titles to topics
+
+
+
+    n_features = 1000
+    n_topics = 20
+    n_top_words = 20
+    print("Fitting LDA models with tf features,")
+    lda = LatentDirichletAllocation(n_topics=n_topics, max_iter=10,
+                                learning_method='online',
+                                learning_offset=50.,
+                                random_state=0,
+                                )
+    lda.fit(X)
+    W_lda = lda.transform(X)
+    H_lda = nmf.components_
 
     # hand_labels = hand_label_topics(H, vocabulary)
     #
