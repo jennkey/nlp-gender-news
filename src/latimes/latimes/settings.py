@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for ajc project
+# Scrapy settings for latimes project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'ajc'
+BOT_NAME = 'latimes'
 
-SPIDER_MODULES = ['ajc.spiders']
-NEWSPIDER_MODULE = 'ajc.spiders'
+SPIDER_MODULES = ['latimes.spiders']
+NEWSPIDER_MODULE = 'latimes.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'ajc (+http://www.yourdomain.com)'
+#USER_AGENT = 'latimes (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -47,7 +47,7 @@ DOWNLOAD_DELAY = 3
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
-    'ajc.middlewares.RotateUserAgentMiddleware': 110,
+    'latimes.middlewares.RotateUserAgentMiddleware': 110,
 }
 
 USER_AGENT_CHOICES = [
@@ -64,7 +64,7 @@ USER_AGENT_CHOICES = [
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'ajc.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'latimes.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -76,12 +76,12 @@ USER_AGENT_CHOICES = [
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'ajc.pipelines.MongoDBPipeline': 300,
+    'latimes.pipelines.MongoDBPipeline': 300,
 }
 
 MONGODB_SERVER = 'localhost'
 MONGODB_PORT = 27017
-MONGODB_DB = 'ajc'
+MONGODB_DB = 'latimes'
 MONGODB_COLLECTION = 'articles'
 
 # Enable and configure the AutoThrottle extension (disabled by default)

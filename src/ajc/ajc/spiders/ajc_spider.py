@@ -17,7 +17,9 @@ class MySpider(BaseSpider):
         self.section = 'none'
 
     def parse(self, response):
+        global item
         #From main page grab each section and link to the section
+        item = AjcItem()
         sections = response.xpath("//*[@class='rssTable']/tbody/tr/td/strong/text()").extract()
         sec_links = response.xpath("//*[@class='rssTable']/tbody/tr/td/a/text()").extract()
         regex = re.compile(r'\b[a-z]{4,}\b')
@@ -26,26 +28,27 @@ class MySpider(BaseSpider):
         #Open each link
         for idx, sec_link in enumerate(sec_links):
             self.section = sections[idx]
-            print self.section
+            item['section'] = self.section
             yield Request(url=sec_link, dont_filter=True, callback=self.parse_topic)
 
     def parse_topic(self, response):
         # For each link from main page need to click on each article link
         # This code gives me the links for each article
         article_links = response.xpath('//guid/text()').extract()
-        for article_link in article_links[0:1]:
+        for article_link in article_links:
             #print("article before yield request.", article_link)
             yield Request(url=article_link, dont_filter=True, callback=self.parse_article)
 
-    def parse_article(self, response, section):
+    def parse_article(self, response):
         source = 'AJC'
         section = self.section
         title = response.xpath('//meta[@name="pubexchange:headline"]/@content').extract()
         pubdate = response.xpath('//meta[@property="article:published_time"]/@content').extract()
         article = response.xpath('//*[@class="storyParagraph"]/text()').extract()
         article = ''.join(article).replace('\n','').replace('\r','')
-        print (source)
-        print (section)
-        print (title)
-        print (pubdate)
-        print (article)
+        item['source'] = source
+        item['section'] = section
+        item['title'] = title
+        item['pubdate'] = pubdate
+        item['article'] = article
+        yield item

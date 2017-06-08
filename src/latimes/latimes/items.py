@@ -8,9 +8,10 @@
 import scrapy
 
 
-class AjcItem(scrapy.Item):
+class latimesItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    idx_title = scrapy.Field()
     source = scrapy.Field()
     section = scrapy.Field()
     title = scrapy.Field()
