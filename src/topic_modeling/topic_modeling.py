@@ -9,41 +9,21 @@ from nltk.stem.porter import PorterStemmer
 #from nltk.stem.wordnet import WordNetLemmatizer
 
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-from sklearn.decomposition import NMF as NMF_sklearn
+from sklearn.decomposition import NMF
 from sklearn.decomposition import LatentDirichletAllocation
 
-from pymongo import MongoClient
 
-client = MongoClient('localhost:27017')
-db = client.news
+import collections
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
 
 
-# function to read records from mongo db
-def read():
-    df = pd.DataFrame(list(db.articles.find()))
-    return df
-
-def clean_text(contents):
-    # remove 'by author'
-    contents = contents.str.replace(r"By[^,]*","")
-    #lower case all text
-    contents = contents.str.lower()
-    # change contractions to their long form
-    contents = contents.str.replace(r"what's", "what is ")
-    contents = contents.str.replace(r"what's", "what is ")
-    contents = contents.str.replace(r"\'s", " ")
-    contents = contents.str.replace(r"\'ve", " have ")
-    contents = contents.str.replace(r"can't", "cannot ")
-    contents = contents.str.replace(r"n't", " not ")
-    contents = contents.str.replace(r"i'm", "i am ")
-    contents = contents.str.replace(r"\'re", " are ")
-    contents = contents.str.replace(r"\'d", " would ")
-    contents = contents.str.replace(r"\'ll", " will ")
-
-    #remove punctuation
-    contents = contents.str.replace(r"[^\w\s]", "")
-    return contents
-
+# Closure over the tokenizer et al.
+def tokenize(text):
+    tokens = tokenizer.tokenize(text)
+    stems = [stem(token) for token in tokens if token not in stop_set]
+    return stems
 
 def build_text_vectorizer(contents, use_tfidf=True, use_stemmer=False, max_features=None):
     '''
@@ -68,7 +48,7 @@ def build_text_vectorizer(contents, use_tfidf=True, use_stemmer=False, max_featu
         return stems
 
 
-    vectorizer_model = TfidfVectorizer(tokenizer=tokenize, max_features=max_features)
+    vectorizer_model = Vectorizer(tokenizer=tokenize, max_features=max_features)
     vectorizer_model.fit(contents)
     vocabulary = np.array(vectorizer_model.get_feature_names())
 
@@ -87,12 +67,12 @@ def hand_label_topics(H, vocabulary):
     '''
     hand_labels = []
     for i, row in enumerate(H):
-        top_five = np.argsort(row)[::-1][:20]
-        print 'topic', i
-        print '-->', ' '.join(vocabulary[top_five])
+        top_five = np.argsort(row)[::-1][:30]
+        print ('topic', i)
+        print ('-->', ' '.join(vocabulary[top_five]))
         label = raw_input('please label this topic: ')
         hand_labels.append(label)
-        print
+        print()
     return hand_labels
 
 def softmax(v, temperature=1.0):
@@ -110,11 +90,11 @@ def analyze_article(article_index, contents, web_urls, W, hand_labels):
     and a summary of which topics it represents. The topics are identified
     via the hand-labels which were assigned by the user.
     '''
-    print web_urls[article_index]
-    print contents[article_index]
+    print( web_urls[article_index])
+    print (contents[article_index])
     probs = softmax(W[article_index], temperature=0.01)
     for prob, label in zip(probs, hand_labels):
-        print '--> {:.2f}% {}'.format(prob * 100, label)
+        print ( '--> {:.2f}% {}'.format(prob * 100, label))
     print
 
 
@@ -125,56 +105,140 @@ def label_articles():
     # may need to somehow have kept the id field here is some sample code
     db.Doc.update({"_id": b["_id"]}, {"$set": {"geolocCountry": myGeolocCountry}})
 
+def display_topics(model, feature_names, no_top_words):
+    for topic_idx, topic in enumerate(model.components_):
+        print ("Topic %d:" % (topic_idx))
+        print( " ".join([feature_names[i] for i in topic.argsort()[:-no_top_words - 1:-1]]))
 
-def main():
+def display_topics_full(H, W, feature_names, documents, no_top_words, no_top_documents):
+    for topic_idx, topic in enumerate(H):
+        print ("Topic %d:" % (topic_idx))
+        print (" ".join([feature_names[i]
+                        for i in topic.argsort()[:-no_top_words - 1:-1]]))
+        top_doc_indices = np.argsort( W[:,topic_idx] )[::-1][0:no_top_documents]
+        for doc_index in top_doc_indices:
+            print(documents[doc_index][0:40])
+
+
+def topic_word_freq(topic_indx):
+    freq_sum = np.sum(H_nmf[topic_indx])
+    frequencies = [val /freq_sum for val in H_nmf[topic_indx]]
+    return dict(zip(tfidf_feature_names, frequencies))
+
+def topic_word_cloud(topic_indx, max_words=300, figsize=(14, 8), width=2400, height=1300, ax=None):
+    ''' Create word cloud for a given topic
+    INPUT:
+        topic_idx: int
+        max_words: int
+            Max number of words to encorporate into the word cloud
+        figsize: tuple (int, int)
+            Size of the figure if an axis isn't passed
+        width: int
+        height: int
+        ax: None or matplotlib axis object
     '''
-    Read the data from MongoDB.
-    Use NMF to find latent topics.
+    wc = WordCloud(background_color='white', max_words=max_words, width=width, height=height)
+    word_freq_dict = topic_word_freq(topic_indx)
+
+    # Fit the WordCloud object to the specific topics word frequencies
+    wc.fit_words(word_freq_dict)
+
+    # Create the matplotlib figure and axis if they weren't passed in
+    if not ax:
+        fig = plt.figure(figsize=figsize)
+        ax = fig.add_subplot(111)
+    ax.imshow(wc)
+    ax.axis('off')
+
+
+if __name__ == '__main__':
+    '''
+    Using cleaned pickled pandas dataframe
+    Use NMF and LDA to find latent topics.
     '''
 
-    #Read data from MongoDB
-    df = read()
-    df['article'] = df['article'].apply(lambda x: ', '.join(x))
-    contents = df['article']
-
-    contents = clean_text(contents)
-
+    #NMF - use td-idf
     # Build our text-to-vector vectorizer, then vectorize our corpus.
-    vectorizer, vocabulary = build_text_vectorizer(contents, use_tfidf=True,
-                                 use_stemmer=False,
-                                 max_features=500)
+    #vectorizer, vocabulary = build_text_vectorizer(contents, use_tfidf=True,
+    #                             use_stemmer=True,
+    #                             max_features=500)
+    #X = vectorizer(contents)
+    no_features = 1000
+    tokenizer = RegexpTokenizer(r"[\w']+")
 
-    X = vectorizer(contents)
+    stop_set = set(stopwords.words('english'))
+    stop_set.add('said')
+    stem = PorterStemmer().stem
 
-    nmf = NMF_sklearn(n_components=20, max_iter=150, random_state=12345, alpha=0.2)
-    W = nmf.fit_transform(X)
-    H = nmf.components_
-    print 'reconstruction error:', nmf.reconstruction_err_
+    # NMF is able to use tf-idf
+    tfidf_vectorizer = TfidfVectorizer(tokenizer=tokenize, max_df=0.95, min_df=2, max_features=no_features, stop_words='english')
+    tfidf = tfidf_vectorizer.fit_transform(contents)
+    tfidf_feature_names = tfidf_vectorizer.get_feature_names()
+
+    #LDA uses counts
+    tf_vectorizer = CountVectorizer(tokenizer=tokenize, max_df=0.95, min_df=2, max_features=no_features, stop_words='english')
+    tf = tf_vectorizer.fit_transform(contents)
+    tf_feature_names = tf_vectorizer.get_feature_names()
+
+    #set topic number
+    no_topics = 10
+
+    # Run NMF
+    nmf = NMF(n_components=no_topics, max_iter=150, random_state=1, alpha=.1, l1_ratio=.5, init='nndsvd').fit(tfidf)
+    W_nmf = nmf.fit_transform(tfidf)
+    H_nmf = nmf.components_
+    print ('reconstruction error:', nmf.reconstruction_err_)
+    topics_nmf = np.argmax(W_nmf, axis=1)
+    num_articles_nmf = collections.Counter(topics_nmf)
+    print("Number of articles in each topic NMF")
+    print(num_articles_nmf)
+    #for each topic create a word cloud
+    path_plot = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/'
+    for topic_indx in range(no_topics):
+        file_name = path_plot + 'nmf_topic_{}_cloud.png'.format(topic_indx)
+        topic_word_cloud(topic_indx)
+        plt.savefig(file_name, dpi=250)
+        plt.close()
+
+
+    # Run LDA
+    lda = LatentDirichletAllocation(n_topics=no_topics, max_iter=5, learning_method='online', learning_offset=50.,random_state=0).fit(tf)
+    W_lda = lda.transform(tf)
+    H_lda = lda.components_
+    topics_lda = np.argmax(W_lda, axis=1)
+    num_articles_lda = collections.Counter(topics_lda)
+    print("Number of articles in each topic LDA")
+    print(num_articles_lda)
+
+    #word_cloud()
+
+    # Display topics
+    no_top_words = 10
+    no_top_documents = 4
+    #print ("NFM")
+    #display_topics_full(H_nmf, W_nmf, tfidf_feature_names, contents, no_top_words, no_top_documents)
+    display_topics(nmf, tfidf_feature_names, no_top_words)
+
+    df_topics = df['topics']
+
+    # Save the pickled dataframe for easy access later
+    df.to_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/topic_data.pkl')
+
+
+    #print ("LDA")
+    #display_topics(lda, tf_feature_names, no_top_words)
+    #display_topics_full(H_lda, W_lda, tf_feature_names, contents, no_top_words, no_top_documents)
+
 
     # choose topic for each document
-    topics = np.argmax(W, axis=1)
+    #topics = np.argmax(W, axis=1)
 
     # match up titles to topics
 
-
-
-    n_features = 1000
-    n_topics = 20
-    n_top_words = 20
-    print("Fitting LDA models with tf features,")
-    lda = LatentDirichletAllocation(n_topics=n_topics, max_iter=10,
-                                learning_method='online',
-                                learning_offset=50.,
-                                random_state=0,
-                                )
-    lda.fit(X)
-    W_lda = lda.transform(X)
-    H_lda = nmf.components_
-
-    # hand_labels = hand_label_topics(H, vocabulary)
+    hand_labels = hand_label_topics(H, vocabulary)
     #
     # for i in rand_articles:
     #     analyze_article(i, contents, web_urls, W, hand_labels)
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()

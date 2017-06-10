@@ -7,20 +7,18 @@ from scrapy import Selector
 from scrapy.http import Request
 from string import punctuation
 import re
+from datetime import datetime, timedelta
+from dateutil import parser
+
 
 class MySpider(BaseSpider):
     name = "latimes"
     allowed_domains = ["latimes.com"]
     start_urls = ["http://www.latimes.com/local/la-los-angeles-times-rss-feeds-20140507-htmlstory.html"]
 
-
-    def __init__(self):
-        self.section = 'none'
-
     def parse(self, response):
-        global item
+        #global item
         #From main page grab each section and link to the section
-        item = latimesItem()
         #sec_links = response.xpath('//div[@class="trb_article_page_body"]//a/@href').extract()
         sections = [
              u'All',
@@ -231,18 +229,28 @@ class MySpider(BaseSpider):
           ]
         #Open each link
         for idx, sec_link in enumerate(sec_links):
-            self.section = sections[idx]
-            item['section'] = self.section
             yield Request(url=sec_link, dont_filter=True, callback=self.parse_topic)
 
     def parse_topic(self, response):
+        item = latimesItem()
+        # get section and link
+        section = response.xpath('//channel/title/text()').extract()
+        sec_link = response.xpath('//channel/link/text()').extract()
+        item['section'] = section
+        print()
+        print ("This is section", section)
+        print()
         # For each link from main page need to click on each article link
         # This code gives me the links for each article
         article_links = response.xpath('//item/link/text()').extract()
-        for article_link in article_links:
-            yield Request(url=article_link, dont_filter=True, callback=self.parse_article)
+        pubDate_list = response.xpath('//item/pubDate/text()').extract()
+        for idx, article_link in enumerate(article_links):
+            if parser.parse(pubDate_list[idx]) > (datetime.today() - timedelta(days=2)):
+                yield Request(url=article_link, dont_filter=True, callback=self.parse_article,
+                    meta={'item' : item})
 
     def parse_article(self, response):
+        item = response.meta['item']
         source = 'latimes'
         title = response.xpath('//title/text()').extract()
         idx_title = [x.replace(' ','') for x in title]

@@ -6,6 +6,7 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 from pymongo import MongoClient
+import pymongo
 from scrapy.conf import settings
 
 class MongoDBPipeline(object):
@@ -16,7 +17,8 @@ class MongoDBPipeline(object):
                 settings['MONGODB_PORT'])
         db = connection[settings['MONGODB_DB']]
         self.collection = db[settings['MONGODB_COLLECTION']]
-        #self.collection.create_index([("source"), ("title")],unique=True)
+        #self.collection.create_index([("idx_title", pymongo.TEXT)],unique=True, name='title_index')
+
 
     def process_item(self, item, spider):
         self.collection.insert(dict(item))

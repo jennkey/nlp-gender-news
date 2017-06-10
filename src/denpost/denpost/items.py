@@ -11,8 +11,9 @@ import scrapy
 class DenpostItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    idx_title = scrapy.Field()
     source = scrapy.Field()
     section = scrapy.Field()
-    title = scrapy.Field() 
+    title = scrapy.Field()
     pubdate = scrapy.Field()
     article = scrapy.Field()

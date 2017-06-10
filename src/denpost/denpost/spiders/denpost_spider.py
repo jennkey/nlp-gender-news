@@ -1,4 +1,3 @@
-from scrapy.spider import BaseSpider
 from scrapy.selector import HtmlXPathSelector
 from denpost.items import DenpostItem
 from scrapy.loader import ItemLoader
@@ -6,6 +5,9 @@ from scrapy import spider
 from scrapy import Selector
 from scrapy.http import Request
 from bs4 import BeautifulSoup
+from scrapy.spiders import BaseSpider
+from string import punctuation
+import re
 
 
 
@@ -30,6 +32,7 @@ class MySpider(BaseSpider):
         title = sel.xpath('.//title/text()').extract()
         section = title[0:1]
         titles = title[2:len(title)]
+
         #for t in title:
         #    if "The Denver Post" not in t:
         #        titles.append(t)
@@ -51,6 +54,10 @@ class MySpider(BaseSpider):
             l.add_value('source', "Denver Post")
             l.add_value('section', section)
             l.add_value('title', titles[idx])
+            #idx_title = [x.replace(' ','') for x in titles[idx]]
+            #idx_title = [''.join(c for c in s if c not in punctuation) for s in idx_title]
+            #idx_title = [x.lower() for x in idx_title]
+            #l.add_value('idx_title', idx_title)
             l.add_value('pubdate', pubdate[idx])
             l.add_value('article', articles[idx])
             yield l.load_item()

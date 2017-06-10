@@ -81,7 +81,7 @@ ITEM_PIPELINES = {
 
 MONGODB_SERVER = 'localhost'
 MONGODB_PORT = 27017
-MONGODB_DB = 'latimes'
+MONGODB_DB = 'latimes_good'
 MONGODB_COLLECTION = 'articles'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -93,7 +93,7 @@ AUTOTHROTTLE_START_DELAY = 5
 AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
-#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
 #AUTOTHROTTLE_DEBUG = False
 

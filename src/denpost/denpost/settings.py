@@ -81,7 +81,7 @@ ITEM_PIPELINES = {
 
 MONGODB_SERVER = 'localhost'
 MONGODB_PORT = 27017
-MONGODB_DB = 'news'
+MONGODB_DB = 'denpost'
 MONGODB_COLLECTION = 'articles'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
