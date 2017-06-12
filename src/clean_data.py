@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import re
 import pdb
+import sys
 from pymongo import MongoClient
 from string import punctuation
 from string import printable
@@ -42,6 +43,16 @@ def read_den_mongodb_data():
     #df['article'] = df['article'].apply(strip_non_ascii)
     return df
 
+def read_latimes_mongodb_data():
+    db = client.latimes_good
+    df = pd.DataFrame(list(db.articles.find()))
+    #df2 = pd.DataFrame(list(db_2.articles.find()))
+    #df = pd.concat([df1, df2])
+    df['title'] = df['title'].astype(str)
+    df['article'] = df['article'].apply(strip_non_ascii)
+    df['article'] = df['article'].astype(str).str.strip()
+    return df
+
 def clean_text(contents):
     # remove 'by author'
     contents = contents.str.replace(r"By[^,]*","")
@@ -72,10 +83,15 @@ if __name__ == '__main__':
     Read the data from MongoDB.
     Use NMF to find latent topics.
     '''
+    #read in newspaper to clean from argument
+    news_paper = sys.argv[1]
 
     #Read data from MongoDB
-    #df = read_ajc_mongodb_data()
-    df = read_den_mongodb_data()
+    if news_paper == 'denver_post':
+        df = read_den_mongodb_data()
+    elif news_paper == 'latimes':
+        df = read_latimes_mongodb_data()
+
 
     #df['title'] = df['title'].apply(lambda x: ', '.join(x))
     print("Number of article pre-dedupe:", len(df))

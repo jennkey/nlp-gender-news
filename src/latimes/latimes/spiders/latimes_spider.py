@@ -245,7 +245,7 @@ class MySpider(BaseSpider):
         article_links = response.xpath('//item/link/text()').extract()
         pubDate_list = response.xpath('//item/pubDate/text()').extract()
         for idx, article_link in enumerate(article_links):
-            if parser.parse(pubDate_list[idx]) > (datetime.today() - timedelta(days=2)):
+            if parser.parse(pubDate_list[idx]) > (datetime.today() - timedelta(days=3)):
                 yield Request(url=article_link, dont_filter=True, callback=self.parse_article,
                     meta={'item' : item})
 

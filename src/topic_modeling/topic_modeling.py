@@ -232,30 +232,8 @@ if __name__ == '__main__':
     topics = np.argmax(W_nmf, axis=1)
     df['topic'] = topics
 
-    #Look at topics and create labels:
-    topic_labels = ['Lifestyle',
- 'International',
- 'U.S. Politics',
- 'Crime',
- 'Sports',
- 'Sports',
- 'Weather',
- 'Sports',
- 'Local Business',
- 'Sports',
- 'Energy',
- 'Local Politics',
- 'Education',
- 'Sports',
- 'Crime']
-
-    topic_label = []
-    for topic in topics:
-        topic_label.append(topic_labels[topic])
-
-    df['topic_label'] = topic_label
     # Save the pickled dataframe for easy access later
-    df.to_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/topic_data.pkl')
+    df.to_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/topic_unlabeled_data.pkl')
 
 
     #print ("LDA")
