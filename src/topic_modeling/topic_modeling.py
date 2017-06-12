@@ -110,14 +110,15 @@ def display_topics(model, feature_names, no_top_words):
         print ("Topic %d:" % (topic_idx))
         print( " ".join([feature_names[i] for i in topic.argsort()[:-no_top_words - 1:-1]]))
 
+
 def display_topics_full(H, W, feature_names, documents, no_top_words, no_top_documents):
     for topic_idx, topic in enumerate(H):
-        print ("Topic %d:" % (topic_idx))
-        print (" ".join([feature_names[i]
+        print("Topic %d:" % (topic_idx))
+        print(" ".join([feature_names[i]
                         for i in topic.argsort()[:-no_top_words - 1:-1]]))
         top_doc_indices = np.argsort( W[:,topic_idx] )[::-1][0:no_top_documents]
         for doc_index in top_doc_indices:
-            print(documents[doc_index][0:40])
+            print(documents.iloc[doc_index][0:40])
 
 
 def topic_word_freq(topic_indx):
@@ -157,6 +158,9 @@ if __name__ == '__main__':
     Use NMF and LDA to find latent topics.
     '''
 
+    df = pd.read_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/clean_df.pkl')
+    contents = df['clean_article']
+
     #NMF - use td-idf
     # Build our text-to-vector vectorizer, then vectorize our corpus.
     #vectorizer, vocabulary = build_text_vectorizer(contents, use_tfidf=True,
@@ -167,24 +171,27 @@ if __name__ == '__main__':
     tokenizer = RegexpTokenizer(r"[\w']+")
 
     stop_set = set(stopwords.words('english'))
-    stop_set.add('said')
+    stop_set.update(['said', 'say', 'thing', 'know', 'like'])
+
     stem = PorterStemmer().stem
 
     # NMF is able to use tf-idf
-    tfidf_vectorizer = TfidfVectorizer(tokenizer=tokenize, max_df=0.95, min_df=2, max_features=no_features, stop_words='english')
+    tfidf_vectorizer = TfidfVectorizer(tokenizer=tokenize, max_df=0.95, min_df=1, max_features=no_features, stop_words=stop_set)
     tfidf = tfidf_vectorizer.fit_transform(contents)
     tfidf_feature_names = tfidf_vectorizer.get_feature_names()
 
     #LDA uses counts
-    tf_vectorizer = CountVectorizer(tokenizer=tokenize, max_df=0.95, min_df=2, max_features=no_features, stop_words='english')
+    tf_vectorizer = CountVectorizer(tokenizer=tokenize, max_df=0.95, min_df=1, max_features=no_features, stop_words=stop_set)
     tf = tf_vectorizer.fit_transform(contents)
     tf_feature_names = tf_vectorizer.get_feature_names()
 
     #set topic number
-    no_topics = 10
+    no_topics = 15
+    no_top_words = 15
+    no_top_documents = 5
 
     # Run NMF
-    nmf = NMF(n_components=no_topics, max_iter=150, random_state=1, alpha=.1, l1_ratio=.5, init='nndsvd').fit(tfidf)
+    nmf = NMF(n_components=no_topics, max_iter=150, random_state=1, alpha=.01, l1_ratio=.5, init='nndsvd').fit(tfidf)
     W_nmf = nmf.fit_transform(tfidf)
     H_nmf = nmf.components_
     print ('reconstruction error:', nmf.reconstruction_err_)
@@ -192,6 +199,8 @@ if __name__ == '__main__':
     num_articles_nmf = collections.Counter(topics_nmf)
     print("Number of articles in each topic NMF")
     print(num_articles_nmf)
+    #display_topics(nmf, tfidf_feature_names, no_top_words)
+    display_topics_full(H_nmf, W_nmf, tfidf_feature_names, contents, no_top_words, no_top_documents)
     #for each topic create a word cloud
     path_plot = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/'
     for topic_indx in range(no_topics):
@@ -202,25 +211,49 @@ if __name__ == '__main__':
 
 
     # Run LDA
-    lda = LatentDirichletAllocation(n_topics=no_topics, max_iter=5, learning_method='online', learning_offset=50.,random_state=0).fit(tf)
-    W_lda = lda.transform(tf)
-    H_lda = lda.components_
-    topics_lda = np.argmax(W_lda, axis=1)
-    num_articles_lda = collections.Counter(topics_lda)
-    print("Number of articles in each topic LDA")
-    print(num_articles_lda)
+    # lda = LatentDirichletAllocation(n_topics=no_topics, max_iter=5, learning_method='online', learning_offset=50.,random_state=0).fit(tf)
+    # W_lda = lda.transform(tf)
+    # H_lda = lda.components_
+    # topics_lda = np.argmax(W_lda, axis=1)
+    # num_articles_lda = collections.Counter(topics_lda)
+    # print("Number of articles in each topic LDA")
+    # print(num_articles_lda)
+    # #display_topics(lda, tf_feature_names, no_top_words)
+    # display_topics_full(H_lda, W_lda, tf_feature_names, contents, no_top_words, no_top_documents)
 
     #word_cloud()
 
     # Display topics
-    no_top_words = 10
-    no_top_documents = 4
+
     #print ("NFM")
-    #display_topics_full(H_nmf, W_nmf, tfidf_feature_names, contents, no_top_words, no_top_documents)
-    display_topics(nmf, tfidf_feature_names, no_top_words)
 
-    df_topics = df['topics']
 
+    #choose topic for each document
+    topics = np.argmax(W_nmf, axis=1)
+    df['topic'] = topics
+
+    #Look at topics and create labels:
+    topic_labels = ['Lifestyle',
+ 'International',
+ 'U.S. Politics',
+ 'Crime',
+ 'Sports',
+ 'Sports',
+ 'Weather',
+ 'Sports',
+ 'Local Business',
+ 'Sports',
+ 'Energy',
+ 'Local Politics',
+ 'Education',
+ 'Sports',
+ 'Crime']
+
+    topic_label = []
+    for topic in topics:
+        topic_label.append(topic_labels[topic])
+
+    df['topic_label'] = topic_label
     # Save the pickled dataframe for easy access later
     df.to_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/topic_data.pkl')
 
@@ -230,12 +263,11 @@ if __name__ == '__main__':
     #display_topics_full(H_lda, W_lda, tf_feature_names, contents, no_top_words, no_top_documents)
 
 
-    # choose topic for each document
-    #topics = np.argmax(W, axis=1)
+
 
     # match up titles to topics
 
-    hand_labels = hand_label_topics(H, vocabulary)
+    #hand_labels = hand_label_topics(H, vocabulary)
     #
     # for i in rand_articles:
     #     analyze_article(i, contents, web_urls, W, hand_labels)
