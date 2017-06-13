@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem.porter import PorterStemmer
 #from nltk.stem.wordnet import WordNetLemmatizer
-
+from nltk.stem.lancaster import LancasterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF
 from sklearn.decomposition import LatentDirichletAllocation
@@ -173,7 +173,8 @@ if __name__ == '__main__':
     stop_set = set(stopwords.words('english'))
     stop_set.update(['said', 'say', 'thing', 'know', 'like'])
 
-    stem = PorterStemmer().stem
+    #stem = PorterStemmer().stem
+    lancaster_stemmer = LancasterStemmer()
 
     # NMF is able to use tf-idf
     tfidf_vectorizer = TfidfVectorizer(tokenizer=tokenize, max_df=0.95, min_df=1, max_features=no_features, stop_words=stop_set)
