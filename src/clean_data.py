@@ -6,7 +6,8 @@ import sys
 from pymongo import MongoClient
 from string import punctuation
 from string import printable
-
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import RegexpTokenizer
 
 #from pandas import compat
 
@@ -78,6 +79,18 @@ def clean_text(contents):
     contents = contents.apply(lambda x: ''.join([" " if  i in pt else i for i in x]))
     return contents
 
+def lemmatize_article(df_col):
+    '''
+    INPUT: dataframe column to be lemmatized
+    OUTPUT: dataframe with lemmatized_article
+    '''
+    tokenizer = RegexpTokenizer(r"[\w']+")
+    lemmatizer = WordNetLemmatizer()
+    contents = df_col
+    df['tokenize_article'] = [tokenizer.tokenize(content) for content in contents]
+    df['lemmatized_article'] = df["tokenize_article"].apply(lambda x: [lemmatizer.lemmatize(y) for y in x])
+
+
 if __name__ == '__main__':
     '''
     Read the data from MongoDB.
@@ -99,17 +112,30 @@ if __name__ == '__main__':
     df = df.drop_duplicates('title')
     print("Number of articles post-dedupe:", len(df))
 
+    #Still have duplicate articles so need to dedupe based on the first few sentences of the article itself.
+    df['first_few'] = df['article'].str[:100]
+    df = df.drop_duplicates('first_few')
+    print("Number of article post-dedupe on article", len(df))
+
     #df['article'] = df['article'].apply(lambda x: ', '.join(x))
     df['article'].str.strip()
     #contents = df['article'].astype(str).str.encode('utf-8')
+
     contents = df['article']
 
     print("Precleaning")
     print(df['article'].astype(str).str.encode('utf-8'))
+
+
     df['clean_article'] = clean_text(contents)
+    #lemmatize the cleaned articles
+    lemmatize_article(df['clean_article'])
+
     print
     print
     print("Post cleaning")
-    print(df['clean_article'])
+    print(df['lemmatized_article'])
+
+
     # Save the pickled dataframe for easy access later
     df.to_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/clean_df.pkl')
