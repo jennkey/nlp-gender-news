@@ -77,18 +77,17 @@ def clean_text(contents):
     #contents=[w.strip(punctuation) for w in contents if len(w.strip(punctuation))>0]
     pt = set(punctuation)
     contents = contents.apply(lambda x: ''.join([" " if  i in pt else i for i in x]))
+
     return contents
 
-def lemmatize_article(df_col):
+def lemmatize_article(text):
     '''
-    INPUT: dataframe column to be lemmatized
-    OUTPUT: dataframe with lemmatized_article
+    INPUT: text to be lemmatized
+    OUTPUT: lemmatized text
     '''
-    tokenizer = RegexpTokenizer(r"[\w']+")
-    lemmatizer = WordNetLemmatizer()
-    contents = df_col
-    df['tokenize_article'] = [tokenizer.tokenize(content) for content in contents]
-    df['lemmatized_article'] = df["tokenize_article"].apply(lambda x: [lemmatizer.lemmatize(y) for y in x])
+    lemma = WordNetLemmatizer()
+    contents = " ".join(lemma.lemmatize(word) for word in text.split())
+    return contents
 
 
 if __name__ == '__main__':
@@ -127,14 +126,15 @@ if __name__ == '__main__':
     print(df['article'].astype(str).str.encode('utf-8'))
 
 
-    df['clean_article'] = clean_text(contents)
+    clean_contents = clean_text(contents)
     #lemmatize the cleaned articles
-    lemmatize_article(df['clean_article'])
+    doc_clean = [lemmatize_article(doc).split() for doc in clean_contents]
+    df['clean_article'] = doc_clean 
 
     print
     print
     print("Post cleaning")
-    print(df['lemmatized_article'])
+    print(df['clean_article'])
 
 
     # Save the pickled dataframe for easy access later
