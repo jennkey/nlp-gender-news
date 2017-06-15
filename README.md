@@ -2,8 +2,14 @@
 NLP project to examine gender equity in news across regions
 
 OVERVIEW
-On average women make 78 cents for every dollar a man earns.  One key factor that contributes to the wage gap is gender differences across occupations and industries.  Women represent only 26% of total employed in computers and mathematical occupations.    The question is why are more women so underrepresented in these high paying occupations.   I propose to examine one aspect of this question by looking at news media’s reporting on topics by gender.    Does the media paint an accurate picture of women in these professions?  How much of the reporting is devoted to discussing each gender?  For, example when technology is discussed in the news are women represented in a similar proportion to their representation in technology?  Using NLP I will examine the relationship between the media’s portrayal of women by ‘occupational topics’ by geographical region.  By looking across different regions in the country where the representation of women in key occupations is different I can examine the relationships between the devotion of each regional newspaper to each gender by occupational ‘topic’.  If the media is giving an accurate portrayal of females in key occupations then females should be mentioned in articles in the same proportion as their representation in each occupation.    
-Since all content is not created equal, I will also examine if there are particular words or subjects that are more likely to be associated with articles devoted to females, such as ‘family’ and ‘work-life balance’ across all ‘occupational topics’.
+Despite the attention, the laws and the...women continue to less on average than men.  On average women make 78 cents for every dollar a man earns.  Women are highly underrepresented in some of the highest paying profession; women represent only 26% of total employed in computers and mathematical occupations, yet (get stats on how much these guys are paid.)  
+
+Why are women so underrepesented in these professions?  Some say it is because they simply don't want to go into these professions (cite), while others believe they are ....
+
+Media is both an influence and a reflection of our view on men and women.  The purpose of this project is to set up a process by which we can examine the representation of men and women in the news.  How often are each gender mentioned?  Are there certain topics that they are 'male' and others that are 'female'?  Do we see differences across regions?  What does this say about our society?
+
+The system 
+
 
 SIMILAR WORK
 
@@ -19,11 +25,17 @@ https://github.com/bbengfort/gender-words-fatale
 
 PROCESS
 
+SCRAPE ARTICLES
+
+CODE LOCATION: src/denpost, src/latimes, src/houston_chron, src/ajc
+
+
+
 1) Set up process from data extraction into MongoDB, to topic modeling to gender detection on all articles,
    to results for Denver Post.
-   a) Scrapy code - X
+   a) Scrapy code - completed
    b) MongoDB feed - completed
-   c) Topic Modeling - in progress
+   c) Topic Modeling -  completed
    d) Gender Detection - in progress
    e) results - not started
 

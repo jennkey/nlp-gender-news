@@ -6,15 +6,14 @@ import pandas as pd
 df_agg_latimes = pd.read_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/latimes/df_agg.pkl')
 df_agg_denpost = pd.read_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/denver_post/df_agg.pkl')
 
-df_agg_latimes.sort_values(['male_percent', 'female_percent'], ascending=[True, True], inplace=True)
-df_agg_denpost.sort_values(['male_percent', 'female_percent'], ascending=[True, True], inplace=True)
-
+df_agg_latimes.sort_values(['topic_label'], ascending=[True], inplace=True)
+df_agg_denpost.sort_values(['topic_label'], ascending=[True], inplace=True)
 
 
 trace1 = go.Scatter(
     x=df_agg_denpost['female_percent'],
     y=df_agg_denpost['male_percent'],
-    mode='markers+text',
+    mode='markers',
     text=df_agg_denpost['topic_label'],
     marker=dict(
         size=df_agg_denpost['topic_count'],
@@ -33,7 +32,7 @@ trace1 = go.Scatter(
 trace2 = go.Scatter(
     x=df_agg_latimes['female_percent'],
     y=df_agg_latimes['male_percent'],
-    mode='markers+text',
+    mode='markers',
     text=df_agg_latimes['topic_label'],
     marker=dict(
         size=df_agg_latimes['topic_count'],

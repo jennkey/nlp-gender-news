@@ -1,0 +1,21 @@
+<html>
+<head>
+  <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("body", 800, 600);
+    d3.csv("la_bubble_data.csv", draw) {
+    var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(75, 30, 490, 330);
+        myChart.addMeasureAxis("percent_female", "Percent Female Sentences");
+        myChart.addMeasureAxis("percent_male", "Percent Male Sentences");
+        myChart.addMeasureAxis("topic_count", "topic_count");
+        myChart.addSeries(null, dimple.plot.bubble);
+        myChart.addLegend(180, 10, 360, 20, "right");
+        myChart.draw();
+    });
+  </script>
+</body>
+</html>

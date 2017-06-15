@@ -22,13 +22,15 @@ def strip_non_ascii(string):
 
 # function to read records from mongo db
 def read_ajc_mongodb_data():
-    db = client.ajc_good
-    df = pd.DataFrame(list(db.articles.find()))
+    db = client.newsarticles
+    df = pd.DataFrame(list(db.articles.find({'source': 'ajc'})))
     #df2 = pd.DataFrame(list(db_2.articles.find()))
     #df = pd.concat([df1, df2])
+    df['title'] = df['title'].apply(strip_non_ascii)
     df['title'] = df['title'].astype(str)
-    df['article'] = df['article'].apply(strip_non_ascii)
+    df['article'] = df['content'].apply(strip_non_ascii)
     df['article'] = df['article'].astype(str).str.strip()
+    df['article'] = df['article'].str.replace(r"BY[^\\]*","")
     return df
 
 def read_den_mongodb_data():
@@ -61,7 +63,6 @@ def clean_text(contents):
     contents = contents.str.lower()
     # change contractions to their long form
     contents = contents.str.replace("what's", "what is ")
-    contents = contents.str.replace("what's", "what is ")
     contents = contents.str.replace("\'ve", " have ")
     contents = contents.str.replace("can't", "cannot ")
     contents = contents.str.replace("n't", " not ")
@@ -71,6 +72,7 @@ def clean_text(contents):
     contents = contents.str.replace(r"\'ll", " will ")
     contents = contents.str.replace('\n', '')
     contents = contents.str.replace(r'\d+','')
+    contents = contents.str.replace("view caption hide caption", "")
     st = set(printable)
     contents = contents.apply(lambda x: ''.join([" " if  i not in st else i for i in x]))
     #remove punctuation
@@ -85,8 +87,10 @@ def lemmatize_article(text):
     INPUT: text to be lemmatized
     OUTPUT: lemmatized text
     '''
+    #remove some words that get lemmatized in a strange way
+    stop_lemma_words = ['was', 'has']
     lemma = WordNetLemmatizer()
-    contents = " ".join(lemma.lemmatize(word) for word in text.split())
+    contents = " ".join(lemma.lemmatize(word) for word in text.split() if not word in stop_lemma_words)
     #print contents
     #contents = [', '.join(list) for list in contents]
     #print type(contents)
@@ -107,7 +111,8 @@ if __name__ == '__main__':
         df = read_den_mongodb_data()
     elif news_paper == 'latimes':
         df = read_latimes_mongodb_data()
-
+    elif news_paper == 'ajc':
+        df = read_ajc_mongodb_data()
 
     #df['title'] = df['title'].apply(lambda x: ', '.join(x))
     print("Number of article pre-dedupe:", len(df))

@@ -25,6 +25,17 @@ def tokenize(text):
     stems = [stem(token) for token in tokens if token not in stop_set]
     return stems
 
+def recon_error_plot(figsize=(14, 8)):
+    # Create the matplotlib figure and axis if they weren't passed in
+    fig = plt.figure(figsize=figsize)
+    ax = fig.add_subplot(111)
+    ax.plot(recon_error_list)
+    ax.set(title='Reconstruction Error',
+           ylabel='Reconstruction Error',
+           xlabel='Number of Topics')
+    plt.savefig('reconstruction_error.png', dpi=250)
+    plt.close()
+
 def display_topics(model, feature_names, no_top_words):
     for topic_idx, topic in enumerate(model.components_):
         print ("Topic %d:" % (topic_idx))
@@ -72,6 +83,7 @@ def topic_word_cloud(topic_indx, max_words=300, figsize=(14, 8), width=2400, hei
     ax.axis('off')
 
 
+
 if __name__ == '__main__':
     '''
     Using cleaned pickled pandas dataframe
@@ -117,6 +129,17 @@ if __name__ == '__main__':
     no_topics = 5
     no_top_words = 15
     no_top_documents = 5
+
+    recon_error_list = []
+    for i in range(150, 250, 50):
+        nmf = NMF(n_components=i, max_iter=150, random_state=1, alpha=.01, l1_ratio=.5, init='nndsvd').fit(tfidf)
+        W_nmf = nmf.fit_transform(tfidf)
+        H_nmf = nmf.components_
+        recon_error_list.append(nmf.reconstruction_err_)
+        print ('reconstruction error:', nmf.reconstruction_err_)
+
+    recon_error_plot()
+
 
     # Run NMF
     nmf = NMF(n_components=no_topics, max_iter=150, random_state=1, alpha=.01, l1_ratio=.5, init='nndsvd').fit(tfidf)

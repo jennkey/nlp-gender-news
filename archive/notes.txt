@@ -1,0 +1,41 @@
+On average women make 78 cents for every dollar a man earns.  One key factor that contributes to the wage gap is gender differences across occupations and industries.  Women represent only 26% of total employed in computers and mathematical occupations.    The question is why are women so underrepresented in these high paying occupations.   I propose to examine one aspect of this question by looking at news media’s reporting on topics by gender.    Does the media paint an accurate picture of women in these professions?  How much of the reporting is devoted to discussing each gender?  For, example when technology is discussed in the news are women represented in a similar proportion to their representation in technology?  Using NLP I will examine the relationship between the media’s portrayal of women by ‘occupational topics’ by geographical region.  By looking across different regions in the country where the representation of women in key occupations is different I can examine the relationships between the devotion of each regional newspaper to each gender by occupational ‘topic’.  If the media is giving an accurate portrayal of females in key occupations then females should be mentioned in articles in the same proportion as their representation in each occupation.
+Since all content is not created equal, I will also examine if there are particular words or subjects that are more likely to be associated with articles devoted to females, such as ‘family’ and ‘work-life balance’ across all ‘occupational topics’.
+
+
+
+IDEA: create a final image showing how the world looks according to the news...similar to this but with pictures, use the words most associated with each latent topic to enhance the images.
+
+White males make up two-thirds of the population.
+The women are less in number, perhaps because
+fewer than 10% live beyond 35. Those who
+do, like their younger and male counterparts, are
+nearly all white and heterosexual. In addition to
+being young, the majority of women are beautiful,
+very thin, passive, and primarily concerned
+with relationships and getting rings out of collars
+and commodes. There are a few bad, bitchy
+women, and they are not so pretty, not so subordinate,
+and not so caring as the good women.
+Most of the bad ones work outside of the home,
+which is probably why they are hardened and undesirable.
+The more powerful, ambitious men occupy
+themselves with important business deals,
+exciting adventures, and rescuing dependent females,
+whom they often then assault sexually.
+
+
+To Do:
+Create Word Clouds by Topic by gender
+Get key stats: overall number of sentences men to women, by topic - add these as zoom instance
+ to presentation
+Clean up entire process
+Run from start to finish for LA Times
+Get some stats for LA and Denver
+Create Final presentation include 'what the world looks like according to the news'
+Clean up github repo
+Next steps:
+    Run for multiple regions
+
+
+Denver Post Good topics:
+   NMF 15 topics, porter stemmer, 
