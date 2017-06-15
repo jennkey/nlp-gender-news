@@ -1,23 +1,30 @@
 import pandas as pd
 import numpy as np
+import fileinput
+import sys
 
 
 if __name__ == '__main__':
 
+    news_paper = sys.argv[1]
 
     #read in pickled data frame with raw topics
-    df = pd.read_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/clean_df.pkl')
-
-    #choose topic for each document
-    topics = np.argmax(W_nmf, axis=1)
-    df['topic'] = topics
+    datapath = '/Users/jenniferkey/galvanize/nlp-gender-news/data/{}/'.format(news_paper)
+    topic_unlabeled_file = datapath + 'topic_unlabeled.pkl'
+    df = pd.read_pickle(topic_unlabeled_file)
 
     # read from stdin or file on command line.
-    topics_label = []
-    for line in fileinput.input():
-        topics_label.append(line.replace('\n',''))
+    labels_file = datapath + 'topics_labels.csv'
+    topic_label_list = []
+    for line in fileinput.input(labels_file):
+        topic_label_list.append(line.replace('\n',''))
 
+    # assign topic label to each article
+    topic_label = []
+    for topic in df['topic']:
+        topic_label.append(topic_label_list[topic])
 
     df['topic_label'] = topic_label
 
-    df.to_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/topic_data_with_label.pkl')
+    topic_labeled_file = datapath + 'topic_labeled.pkl'
+    df.to_pickle(topic_labeled_file)

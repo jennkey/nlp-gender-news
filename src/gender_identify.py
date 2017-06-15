@@ -3,7 +3,6 @@ from __future__ import division
 import glob
 import nltk
 from string import punctuation
-from pymongo import MongoClient
 import pandas as pd
 import numpy as np
 import unicodedata
@@ -13,9 +12,8 @@ import matplotlib.pyplot as plt
 from gender_bubble_plot import gender_bubble_plot
 from collections import Counter
 from nltk.corpus import stopwords
+import sys
 
-client = MongoClient()
-db = client.news
 
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
@@ -175,10 +173,16 @@ def top_male_female_words_by_topic(df):
 
 if __name__ == '__main__':
 
+    #read in newspaper
+    news_paper = sys.argv[1]
 
-    # articles are in mongo db so read from mongo db
-    #df = read()
-    df = pd.read_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/topic_data.pkl')
+    # Create paths for data and plots
+    datapath = '/Users/jenniferkey/galvanize/nlp-gender-news/data/{}/'.format(news_paper)
+    plotpath = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/{}/'.format(news_paper)
+
+    # read in pickled dataframe with topics and labels
+    topics_file = datapath + 'topic_labeled.pkl'
+    df = pd.read_pickle(topics_file)
     #df['article'] = df['article'].apply(lambda x: ', '.join(x))
     text = df['article']
 
@@ -246,7 +250,6 @@ if __name__ == '__main__':
                           (proper_nouns[word].get('upper',0) +
                            proper_nouns[word].get('lower',0))>.50])
 
-        print('This is the proper nouns:', proper_nouns_set)
 
         #remove gendered words, stop words
         #common_words=list(common_words-male_words-female_words-proper_nouns_set)
@@ -293,10 +296,13 @@ if __name__ == '__main__':
     df['female_word_count'] = female_word_count_list
     df['male_word_count'] = male_word_count_list
 
-    path_plot = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/'
     #f, ax = plt.subplots(figsize=(6, 6))
-    gender_bubble_plot(df)
-    file_name = path_plot + 'denpost_gender_bubble_plot.png'
+    df_agg = gender_bubble_plot(df)
+    file_name = plotpath + 'gender_bubble_plot.png'
     plt.savefig(file_name, dpi=250)
     plt.close()
     top_male_female_words_by_topic(df)
+
+    # Save the pickled dataframe for easy access later
+    agg_file = datapath + 'df_agg.pkl'
+    df_agg.to_pickle(agg_file)

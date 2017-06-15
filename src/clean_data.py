@@ -87,6 +87,10 @@ def lemmatize_article(text):
     '''
     lemma = WordNetLemmatizer()
     contents = " ".join(lemma.lemmatize(word) for word in text.split())
+    #print contents
+    #contents = [', '.join(list) for list in contents]
+    #print type(contents)
+    #contents = [list.replace(',','') for list in contents]
     return contents
 
 
@@ -118,6 +122,7 @@ if __name__ == '__main__':
 
     #df['article'] = df['article'].apply(lambda x: ', '.join(x))
     df['article'].str.strip()
+    print(len(df))
     #contents = df['article'].astype(str).str.encode('utf-8')
 
     contents = df['article']
@@ -128,8 +133,8 @@ if __name__ == '__main__':
 
     clean_contents = clean_text(contents)
     #lemmatize the cleaned articles
-    doc_clean = [lemmatize_article(doc).split() for doc in clean_contents]
-    df['clean_article'] = doc_clean 
+    doc_clean = [lemmatize_article(doc) for doc in clean_contents]
+    df['clean_article'] = doc_clean
 
     print
     print
@@ -138,4 +143,5 @@ if __name__ == '__main__':
 
 
     # Save the pickled dataframe for easy access later
-    df.to_pickle('/Users/jenniferkey/galvanize/nlp-gender-news/data/clean_df.pkl')
+    path = '/Users/jenniferkey/galvanize/nlp-gender-news/data/{}/clean_df.pkl'.format(news_paper)
+    df.to_pickle(path)

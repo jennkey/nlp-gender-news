@@ -46,7 +46,7 @@ def gender_bubble_plot(df_unagg):
     f, ax = plt.subplots(figsize=(6, 6))
     ax.scatter(x,y,s=s, cmap='rainbow', alpha=.5)
     ax.set(xlim=(0, 1), ylim=(0, 1),
-        title="Denver Post",
+        title="Los Angeles Times",
         xlabel='Percent of Female Sentences',
         ylabel='Percent of Male Sentences')
      # plotting the first eigth letters of the state's name
@@ -73,3 +73,4 @@ def gender_bubble_plot(df_unagg):
     # xlim or ylim is changed.
     ax.callbacks.connect('xlim_changed', on_change)
     ax.callbacks.connect('ylim_changed', on_change)
+    return df_agg
