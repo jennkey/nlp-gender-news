@@ -2,9 +2,14 @@ import pandas as pd
 import numpy as np
 import fileinput
 import sys
-
+import csv
 
 if __name__ == '__main__':
+
+    topic_label_list = []
+    for i in range(50):
+        topic_label_list.append('topic{}'.format(i))
+    print(topic_label_list)
 
     news_paper = sys.argv[1]
 
@@ -15,9 +20,14 @@ if __name__ == '__main__':
 
     # read from stdin or file on command line.
     labels_file = datapath + 'topics_labels.csv'
-    topic_label_list = []
-    for line in fileinput.input(labels_file):
-        topic_label_list.append(line.replace('\n',''))
+    # topic_label_list = []
+    # with open(labels_file, 'rb') as csvfile:
+    #     labelreader = csv.reader(csvfile)
+    #     for row in labelreader:
+    #         print row
+    #         topic = ', '.join(row)
+    #         topic_label_list.append(topic)
+
 
     # assign topic label to each article
     topic_label = []

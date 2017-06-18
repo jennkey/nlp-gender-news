@@ -1,0 +1,402 @@
+2831
+('reconstruction error:', 42.92982744400709)
+Topic 0:
+Number of articles 144:
+get go think thi people want make im one feel work would way dont time
+television drama in recent year have tak
+it hard to imagine gwyneth paltrow here 
+hillary clinton address the graduate cla
+hour after receive a seven page fiery le
+sure a crystal chandelier and a closet t
+Topic 1:
+Number of articles 75:
+trump president administration donald tweet white house obama political new republican hi mail campaign washington
+for a president prone to distraction unu
+i know word i have the best word famousl
+ucif only he would stop tweet ud those w
+washington the first family be together 
+the washington post attorney general for
+Topic 2:
+Number of articles 137:
+ud ut uci ucthe ure ucit ucwe um uve would get ull one go story
+would over del danica patrick want more 
+new york bob dylan complete hi nobel cou
+it only slightly xaunusual when suzanne 
+adele arakawa outgo new anchor who rule 
+special to the washington post with ucth
+Topic 3:
+Number of articles 63:
+comey investigation fbi trump president testimony flynn fire director committee russia conversation intelligence mr hi
+you can read the full testimony from com
+almost a month after he fire by presiden
+here be some of the highlight comey say 
+former fbi director jame comey be testif
+washington former fbi director jame come
+Topic 4:
+Number of articles 70:
+pitch hit run inn angel dodger bat inning game homer single walk right two score
+the two men take the mound share an igno
+spend a significant portion of the last 
+in a silent nearly vacant visit clubhous
+they manage nothe and then they can do s
+there a decide lack of buzz around on mo
+Topic 5:
+Number of articles 92:
+police officer man arrest report block woman body street investigation find may search call authority
+a suspect eaton motorcycle gang member c
+the larimer county coroner identify step
+sound asleep on may arvada police office
+official be investigate how officer kill
+slow getaway arvada police be dispatch t
+Topic 6:
+Number of articles 51:
+school student district high education parent teacher board children kid child public choice learn test
+betsy devo today charter school be not a
+more than acre of former wheat field and
+opinion offer more school choice to afri
+a white alabama town get own school dist
+opinion an atlanta school die today vict
+Topic 7:
+Number of articles 40:
+student college campus university education carry class graduate gun program study community programme system speech
+for most of her life angela vera never i
+the model identify in the cover story on
+the campus carry law bring question chal
+the trump administration be suspend two 
+washington xa hannah zwick put herself t
+Topic 8:
+Number of articles 49:
+ossoff handel district th democrat republican voter campaign race georgia vote congressional gop ad percent
+another high power republican group be r
+the unite state chamber of commerce form
+former republican presidential candidate
+an atlanta journal constitution poll rel
+just how deeply the june runoff touch ge
+Topic 9:
+Number of articles 59:
+team player season league play baseball year field star basketball last championship go mexico next
+a girl youth soccer team disqualify from
+unlike many nhl team the av on tuesday d
+lake forest el toro high baseball player
+no les of a coach than pete carroll of t
+would enver post prep editor kyle newman
+Topic 10:
+Number of articles 37:
+hi father man career year son wife life old family die death make later daughter
+japanese crown prince naruhito pledge tu
+helmut kohl the long serve former chance
+pitbull and prince royce be about halfwa
+hi clay court prowes a unassailable a ev
+yep i m mr worldwide akili casundria ram
+Topic 11:
+Number of articles 103:
+company stock technology employee billion price fall busines firm executive rise store market chief board
+unite state stock bounce back to record 
+unite state stock index slip again monda
+silicon valley know well the aggressive 
+the bad boy of silicon valley a company 
+unite state stock fall thursday a techno
+Topic 12:
+Number of articles 28:
+cosby constand assault testimony defense testify bill judge drug interview lawyer women charge case daughter
+bill cosby arrive for hi sexual assault 
+the associate press norristown pa bill c
+an unusually specific picture of recent 
+imperfect husband or sick man victim of 
+norristown pa bill cosby acknowledge to 
+Topic 13:
+Number of articles 76:
+home room square property house space feet build kitchen floor live estate area sale outdoor
+what complete in mclain flatter road be 
+it not every day that a acre property al
+a detail staircase dominate the two leve
+charle zegar billionaire computer scient
+in the month of may the most expensive h
+Topic 14:
+Number of articles 76:
+game warrior playoff final point play goal nba score win jame first sery golden cup
+oakland calif the addition of kevin dura
+just a goaltender have say dure the dark
+pittsburgh the goal that come so easily 
+game hawk at wizardsapril p m philip are
+oakland calif seven technical foul one f
+Topic 15:
+Number of articles 70:
+state unite mexico country american military official force attack world international group nation security war
+washington president donald trump say th
+an arm drone fire on unite state back co
+german chancellor angela merkel tell a c
+even a hi top advisor seek to defuse an 
+three american service member be kill an
+Topic 16:
+Number of articles 60:
+shoot gun attack rep capitol baseball fire republican violence practice wednesday field member lawmaker thi
+a rare act of apparent political violenc
+a capitol hill police officer stand hi p
+the house of representative postpone mos
+it may take some time before we learn th
+house majority whip r la and four other 
+Topic 17:
+Number of articles 58:
+colorado denver state xa spring submit mountain mail west letter post water university outdoor community
+a voter create water conservation board 
+while colorado doesn ut typically see th
+colorado will begin shift away from stan
+on behalf of the colorado hospital assoc
+grow up in rural granby i see somethe th
+Topic 18:
+Number of articles 97:
+film movie star character actor play director direct story war role theater feature scene thi
+hello im and welcome to another edition 
+early in hi career filmmaker bill morris
+universal picture build it legacy with h
+the comedy star atlanta native ed helm a
+photo credit gene page amcdanai gurira k
+Topic 19:
+Number of articles 62:
+city council project resident park plan street neighborhood people community station development build new official
+on tuesday the la caada flintridge city 
+the burbank city council unanimously vot
+find a place to park in old towne orange
+newport dune waterfront resort be consid
+local street artist and city official be
+Topic 20:
+Number of articles 56:
+bill house senate health republican care tax gop law would democrat measure congress pass vote
+a president donald trump on friday decla
+ask about russia mr trump say it be time
+have learn from their colleague in the h
+be face increase criticism for duck publ
+a president donald trump meet tuesday wi
+Topic 21:
+Number of articles 78:
+show season tv new fox sery thi air radio network host star ajc perform talk
+thi post tuesday june by rodney ho rho a
+nigel lythgoe be best know to tv viewer 
+thi post on wednesday june by rodney ho 
+after lengthy negotiation nene leake on 
+thi be tuesday june by rodney ho rho ajc
+Topic 22:
+Number of articles 72:
+court case judge law rule attorney sentence order federal lawsuit ban appeal legal decision charge
+another federal appeal court refuse on m
+the colorado supreme court rule that con
+a federal appeal court on monday refuse 
+it decision time at the a the justice pr
+can president donald trump u anti muslim
+Topic 23:
+Number of articles 52:
+atlanta ajc restaurant traffic thi youre spring facebook scene announce bar story com follow park
+follow their departure from the atlanta 
+update atlanta ballet release the follow
+to celebrate the open of the first ever 
+atlanta theatergoer will be able to glob
+take a trip to ethiopia with the veggie 
+Topic 24:
+Number of articles 20:
+degree high service denver expect afternoon chance friday saturday monday weekend sunday national thursday week
+sunshine and strong wind be forecast alo
+brisk wind thunderstorm and rain be expe
+temperature will rise into the for the n
+stormy weather include rain and thunder 
+forecaster predict afternoon rain and th
+Topic 25:
+Number of articles 92:
+music song band musical stage tour perform crowd play award hall fan performance show hit
+paul simon get hi groove on branden camp
+he isnt the most charismatic performer e
+kesha have a blast on stage at music mid
+well at least saturday sunny the second 
+at p m sharp the avett brother creep ont
+Topic 26:
+Number of articles 45:
+rocky black pitch game baseball era field pitcher league start mountain inning colorado jeff season
+would enver post sport writer patrick sa
+the rocky on thursday call up catcher to
+the split be shock and mike dunn know it
+be charlie blackmon or greg holland the 
+it u be day since jon gray pitch in a ga
+Topic 27:
+Number of articles 49:
+angele lo west olympic san hollywood california march air time la story beach point event
+a a wartime promotion the lo angele time
+follow world war ii the lo angele time e
+candace parker score point chelsea gray 
+lo angele be home to hot tech firm such 
+visitor to lo angele international airpo
+Topic 28:
+Number of articles 28:
+falcon meet end jone pass back honor sign practice play guard run return season ryan
+the falcon used their moore finish with 
+ifedi who spend part of the last two sea
+flowery branch falcon safety william moo
+flowery branch falcon coach dan quinn pu
+the falcon have player under contract wi
+Topic 29:
+Number of articles 51:
+race win cup victory finish champion second year track johnson first run driver time final
+turn a lap of mph on friday to win the p
+would etroit graham rahal be relish a re
+would over del jimmie johnson sped off o
+concord n c austin dillon pass an out of
+a year ago in the coca cola at charlotte
+Topic 30:
+Number of articles 38:
+brave season game hit homer bat major get start go base nine spring three baseball
+freddie freeman be one of the three best
+but with exactly one ninth of the season
+miami i talk with a senior scout for a n
+miami so there panic on the street of bu
+there panic in the burb and also all the
+Topic 31:
+Number of articles 94:
+food restaurant store open shop location whole customer drink bar make market serve kitchen brand
+there be lot of drama thi past week at l
+the latest steakhouse and sushi bar kata
+jeff chon and christian fernandez be bec
+mali hu chief operate officer for katana
+daily camera the good food the brainchil
+Topic 32:
+Number of articles 19:
+winner reality daughter media mother name arrest post hear document town charge phone graduate new
+reality winner yearbook photo kingsville
+dure reality leigh winner bond hear last
+hang on let me call my friend she instru
+the word sound a lot like a confession m
+reality winner high school graduation ph
+Topic 33:
+Number of articles 30:
+session russia russian attorney general sen question committee investigation intelligence ask senate answer campaign senator
+amid question about the investigation of
+here be a rundown of today hear pm chair
+the unite state attorney general denounc
+attorney general jeff session will appea
+i have never meet with or have any conve
+Topic 34:
+Number of articles 46:
+car vehicle driver drive ride price get seat per buy test new steal may offer
+buy a car be a major expense that especi
+would enver u cargo user will start see 
+if you be look to go green with your nex
+wave goodbye to the road trip a we know 
+sell a car yourself might sound simple e
+Topic 35:
+Number of articles 41:
+georgia state kill name ajc officer law gun report public new county sound university death
+a member flee georgia pta risk statu sta
+that the toll of mass shooting in georgi
+the adorable georgia coyote with a gp co
+twenty five dead sixty nine wound that t
+state wildlife official a eager to kill 
+Topic 36:
+Number of articles 41:
+party election vote may voter conservative seat government campaign leader majority candidate political democratic would
+british prime minister call a snap elect
+britain opposition leader jeremy corbyn 
+a defiant vow to stay on a prime ministe
+the two top aide to british prime minist
+london beleaguer british prime minister 
+Topic 37:
+Number of articles 35:
+com june photo twitter http www ajc tweet post co ticket video full tour st
+a tornado warn issue for northeastern co
+the use of the slur both jar and confoun
+getty imagescomic bill maher stir contro
+when writer director theodore witcher ro
+it u time to celebrate colorado dad they
+Topic 38:
+Number of articles 35:
+bank financial account credit federal money america customer report change fund power well smith rate
+the house vote along party line thursday
+co will guarantee that customer harm by 
+online lender and financial start up sof
+a part of a class action settlement co w
+the treasury department on monday call f
+Topic 39:
+Number of articles 43:
+coach football former head university season report college violence championship basketball title state program three
+former university of colorado football a
+norman okla just three year ago lincoln 
+new york al pacino will star a late penn
+the university of colorado board of rege
+below be the full report of the two exte
+Topic 40:
+Number of articles 41:
+marijuana plant drug medical law product industry grow state legal federal sell ad rule use
+just in time for the long independence d
+a former colorado marijuana enforcement 
+colorado may be the laboratory for test 
+sacramento calif california would set st
+quincy mass a massachusetts medical mari
+Topic 41:
+Number of articles 60:
+round draft pick laker th overall first player second ball nba college guard high season
+after four former colorado high school s
+after regi jesuit graduate david peterso
+new york another rocket be head to toron
+rocky manager bud black twice skip a cha
+the nhl on thursday announce the officia
+Topic 42:
+Number of articles 37:
+million year contract project list fund money cost deal pay last budget total spend top
+cristiano ronaldo be once again the high
+new york sean ucdiddy ud comb be the top
+the newport beach city council will vote
+the newport beach city council pass a ro
+the mummy leap to life thi week at the c
+Topic 43:
+Number of articles 37:
+lane road close traffic vehicle fire project drive construction department friday monday driver weekend trip
+here a list of the work in metro atlanta
+plan to travel thi weekend the georgia d
+thank to the georgia department of trans
+if you want to see how the state plan to
+the georgia department of transportation
+Topic 44:
+Number of articles 73:
+county sheriff department deputy death office drug search authority official accord die arrest medical investigation
+the department will supply thousand of f
+adam county sheriff u investigator have 
+the garfield county sheriff u office arr
+donnie russell rowe left and ricky dubos
+a year old wyom girl kill sunday afterno
+Topic 45:
+Number of articles 31:
+bronco denver june practice hold super get football um uve xa sign play ut back
+the denver bronco hold a mandatory minic
+the denver bronco hold a mandatory minic
+tom graham a former bronco linebacker xa
+in walter camp conceive a set of ucfootb
+thi offseason the denver bronco have a n
+Topic 46:
+Number of articles 44:
+percent rate tax increase price market year cost sale average job worker number low lower
+many san diegan would like to own a home
+washington the federal reserve raise it 
+metro denver u percent unemployment rate
+the quarterback long be consider the mos
+a chart publish last month by the europe
+Topic 47:
+Number of articles 32:
+rock station regular guy radio morn show river year monday air talk im top line
+jason bailey who spend a year at the gam
+larry wach at steve rickman wed earlier 
+at about thi morn i officially relieve o
+thi post september by rodney ho on hi aj
+larry wach on the regular guy twitter pa
+Topic 48:
+Number of articles 48:
+festival artist art garden museum music day event plant weekend year piece saturday design free
+duluth will join the list of metro city 
+begin in the spring several atlanta city
+the bicycle tower at paradise garden be 
+create by the late self teach artist how
+imagine festival and it colorful surroun
+Topic 49:
+Number of articles 16:
+mile accord center information read post service report thi create day write come point last
+a shallow magnitude earthquake report th
+a shallow magnitude earthquake report we
+a shallow magnitude earthquake report th
+a shallow magnitude earthquake report fr
+a shallow magnitude earthquake center at

@@ -296,13 +296,17 @@ if __name__ == '__main__':
     df['female_word_count'] = female_word_count_list
     df['male_word_count'] = male_word_count_list
 
+
     #f, ax = plt.subplots(figsize=(6, 6))
     df_agg = gender_bubble_plot(df)
     file_name = plotpath + 'gender_bubble_plot.png'
     plt.savefig(file_name, dpi=250)
     plt.close()
-    top_male_female_words_by_topic(df)
+
+    #top_male_female_words_by_topic(df)
 
     # Save the pickled dataframe for easy access later
     agg_file = datapath + 'df_agg.pkl'
     df_agg.to_pickle(agg_file)
+    gendered_articles = datapath + 'df_gendered_articles.pkl'
+    df.to_pickle(gendered_articles)

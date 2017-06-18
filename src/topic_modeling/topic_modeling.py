@@ -12,11 +12,69 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF
 from sklearn.decomposition import LatentDirichletAllocation
 import sys
+import os
 
 import collections
 
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+
+def make_dir(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+def read_df(news_paper):
+    '''
+    Doc string
+    '''
+    if news_paper == 'all':
+        datapath = '/Users/jenniferkey/galvanize/nlp-gender-news/data/all/'
+        file1 = '/Users/jenniferkey/galvanize/nlp-gender-news/data/denver_post/clean_df.pkl'
+        file2 = '/Users/jenniferkey/galvanize/nlp-gender-news/data/latimes/clean_df.pkl'
+        file3 = '/Users/jenniferkey/galvanize/nlp-gender-news/data/ajc/clean_df.pkl'
+        plotpath = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/all/'
+        df_denverpost = pd.read_pickle(file1)
+        df_latimes = pd.read_pickle(file2)
+        df_ajc = pd.read_pickle(file3)
+        df = df_denverpost.append(df_latimes, ignore_index=True)
+        df = df.append(df_ajc, ignore_index=True)
+
+    elif 'nest' in news_paper:
+        datapath = '/Users/jenniferkey/galvanize/nlp-gender-news/data/all/{}/'.format(news_paper)
+        plotpath = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/all/{}/'.format(news_paper)
+        make_dir(datapath)
+        make_dir(plotpath)
+
+        if len(news_paper) == 4:
+            topic = int(news_paper[4])
+        else:
+            topic = int(news_paper[4:6])
+
+        clean_file = '/Users/jenniferkey/galvanize/nlp-gender-news/data/all/topic_unlabeled.pkl'
+        df = pd.read_pickle(clean_file)
+        df = df[(df['topic'] == topic)]
+
+    elif 'female' in news_paper:
+        datapath = '/Users/jenniferkey/galvanize/nlp-gender-news/data/all/{}/'.format(news_paper)
+        plotpath = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/all/{}/'.format(news_paper)
+        make_dir(datapath)
+        make_dir(plotpath)
+        gendered_articles = '/Users/jenniferkey/galvanize/nlp-gender-news/data/all/df_gendered_articles.pkl'
+        df = pd.read_pickle(gendered_articles)
+        df = df[(df['female_sentences'] > df['male_sentences'])]
+
+    elif 'male' in news_paper:
+        datapath = '/Users/jenniferkey/galvanize/nlp-gender-news/data/all/{}/'.format(news_paper)
+        plotpath = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/all/{}/'.format(news_paper)
+        make_dir(datapath)
+        make_dir(plotpath)
+        gendered_articles = '/Users/jenniferkey/galvanize/nlp-gender-news/data/all/df_gendered_articles.pkl'
+        df = pd.read_pickle(gendered_articles)
+        df = df[(df['female_sentences'] < df['male_sentences'])]
+
+    final_pickle =  datapath + 'topic_unlabeled_{}.pkl'.format(news_paper)
+    return df, datapath, plotpath, final_pickle
+
 
 
 # Closure over the tokenizer et al.
@@ -25,26 +83,66 @@ def tokenize(text):
     stems = [stem(token) for token in tokens if token not in stop_set]
     return stems
 
-def recon_error_plot(figsize=(14, 8)):
+def grid_number_topics(start, stop, increment):
+    recon_error_list = []
+    number_topics = []
+    for i in range(start, stop, increment):
+        nmf = NMF(n_components=i, max_iter=150, random_state=1, alpha=.01, l1_ratio=.5, init='nndsvd').fit(tfidf)
+        W_nmf = nmf.fit_transform(tfidf)
+        H_nmf = nmf.components_
+        recon_error_list.append(nmf.reconstruction_err_)
+        number_topics.append(i)
+        print ('topic_number, reconstruction error:', i, nmf.reconstruction_err_)
+
+    recon_error_plot(number_topics=number_topics, recon_error_list=recon_error_list)
+
+def recon_error_plot(number_topics, recon_error_list, figsize=(14,8)):
     # Create the matplotlib figure and axis if they weren't passed in
     fig = plt.figure(figsize=figsize)
     ax = fig.add_subplot(111)
-    ax.plot(recon_error_list)
+    ax.plot(number_topics, recon_error_list)
     ax.set(title='Reconstruction Error',
            ylabel='Reconstruction Error',
            xlabel='Number of Topics')
-    plt.savefig('reconstruction_error.png', dpi=250)
+    plt_file = plotpath + 'reconstruction_error.png'
+    plt.savefig(plt_file, dpi=250)
     plt.close()
 
+
+def perform_NMF(no_topics=15, no_top_words=15, no_top_documents=5):
+    # Run NMF
+    nmf = NMF(n_components=no_topics, max_iter=150, random_state=1, alpha=.01, l1_ratio=.5, init='nndsvd').fit(tfidf)
+    W_nmf = nmf.fit_transform(tfidf)
+    H_nmf = nmf.components_
+    print ('reconstruction error:', nmf.reconstruction_err_)
+    topics_nmf = np.argmax(W_nmf, axis=1)
+    num_articles_nmf = collections.Counter(topics_nmf)
+    display_topics_full(H_nmf, W_nmf, tfidf_feature_names, contents, no_top_words, no_top_documents, num_articles_nmf)
+    return W_nmf, H_nmf, topics_nmf
+
+def peform_LDA():
+    #Run LDA
+    lda = LatentDirichletAllocation(n_topics=no_topics, max_iter=5, learning_method='online', learning_offset=50.,random_state=0).fit(tf)
+    W_lda = lda.transform(tf)
+    H_lda = lda.components_
+    topics_lda = np.argmax(W_lda, axis=1)
+    num_articles_lda = collections.Counter(topics_lda)
+    display_topics_full(H_lda, W_lda, tf_feature_names, contents, no_top_words, no_top_documents)
+    return W_lda, H_lda, topics_lda
+
+
 def display_topics(model, feature_names, no_top_words):
+    num_articles = 'num_articles_{}'.format(model)
     for topic_idx, topic in enumerate(model.components_):
         print ("Topic %d:" % (topic_idx))
+        print ("Number of articles %d:" % (num_articles[topic_idx]))
         print( " ".join([feature_names[i] for i in topic.argsort()[:-no_top_words - 1:-1]]))
 
 
-def display_topics_full(H, W, feature_names, documents, no_top_words, no_top_documents):
+def display_topics_full(H, W, feature_names, documents, no_top_words, no_top_documents, num_articles):
     for topic_idx, topic in enumerate(H):
         print("Topic %d:" % (topic_idx))
+        print ("Number of articles %d:" % (num_articles[topic_idx]))
         print(" ".join([feature_names[i]
                         for i in topic.argsort()[:-no_top_words - 1:-1]]))
         top_doc_indices = np.argsort( W[:,topic_idx] )[::-1][0:no_top_documents]
@@ -94,11 +192,9 @@ if __name__ == '__main__':
     news_paper = sys.argv[1]
 
     #read in pickle
-    datapath = '/Users/jenniferkey/galvanize/nlp-gender-news/data/{}/'.format(news_paper)
-    plotpath = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/{}/'.format(news_paper)
-    clean_file = datapath + 'clean_df.pkl'
-    df = pd.read_pickle(clean_file)
+    df, datapath, plotpath, final_pickle = read_df(news_paper)
     contents = df['clean_article']
+    print (len(contents))
 
     #NMF - use td-idf
     # Build our text-to-vector vectorizer, then vectorize our corpus.
@@ -106,11 +202,11 @@ if __name__ == '__main__':
     #                             use_stemmer=True,
     #                             max_features=500)
     #X = vectorizer(contents)
-    no_features = 10000
+    no_features = 1000
     tokenizer = RegexpTokenizer(r"[\w']+")
 
     stop_set = set(stopwords.words('english'))
-    stop_set.update(['said', 'say', 'thing', 'know', 'like'])
+    stop_set.update(['said', 'say', 'thing', 'know', 'like', 'thi'])
 
     #stem = PorterStemmer().stem
     stem = LancasterStemmer().stem
@@ -125,65 +221,25 @@ if __name__ == '__main__':
     tf = tf_vectorizer.fit_transform(contents)
     tf_feature_names = tf_vectorizer.get_feature_names()
 
+    # Grid search for right number of topics
+    #grid_number_topics(1, 100, 20)
+
     #set topic number
-    no_topics = 5
-    no_top_words = 15
-    no_top_documents = 5
+    W_nmf, H_nmf, topics = perform_NMF(no_topics=50, no_top_words=15, no_top_documents=5)
 
-    recon_error_list = []
-    for i in range(150, 250, 50):
-        nmf = NMF(n_components=i, max_iter=150, random_state=1, alpha=.01, l1_ratio=.5, init='nndsvd').fit(tfidf)
-        W_nmf = nmf.fit_transform(tfidf)
-        H_nmf = nmf.components_
-        recon_error_list.append(nmf.reconstruction_err_)
-        print ('reconstruction error:', nmf.reconstruction_err_)
-
-    recon_error_plot()
-
-
-    # Run NMF
-    nmf = NMF(n_components=no_topics, max_iter=150, random_state=1, alpha=.01, l1_ratio=.5, init='nndsvd').fit(tfidf)
-    W_nmf = nmf.fit_transform(tfidf)
-    H_nmf = nmf.components_
-    print ('reconstruction error:', nmf.reconstruction_err_)
-    topics_nmf = np.argmax(W_nmf, axis=1)
-    num_articles_nmf = collections.Counter(topics_nmf)
-    print("Number of articles in each topic NMF")
-    print(num_articles_nmf)
-    display_topics(nmf, tfidf_feature_names, no_top_words)
-    display_topics_full(H_nmf, W_nmf, tfidf_feature_names, contents, no_top_words, no_top_documents)
+    #Create word clouds
     #for each topic create a word cloud
-    path_plot = '/Users/jenniferkey/galvanize/nlp-gender-news/plots/'
-    for topic_indx in range(no_topics):
+    for topic_indx in range(len(H_nmf)):
         file_name = plotpath + 'nmf_topic_{}_cloud.png'.format(topic_indx)
-        topic_word_cloud(topic_indx)
+        topic_word_cloud(topic_indx, 100)
         plt.savefig(file_name, dpi=250)
         plt.close()
 
-
-    # Run LDA
-    # lda = LatentDirichletAllocation(n_topics=no_topics, max_iter=5, learning_method='online', learning_offset=50.,random_state=0).fit(tf)
-    # W_lda = lda.transform(tf)
-    # H_lda = lda.components_
-    # topics_lda = np.argmax(W_lda, axis=1)
-    # num_articles_lda = collections.Counter(topics_lda)
-    # print("Number of articles in each topic LDA")
-    # print(num_articles_lda)
-    # display_topics(lda, tf_feature_names, no_top_words)
-    # display_topics_full(H_lda, W_lda, tf_feature_names, contents, no_top_words, no_top_documents)
-
-    # Display topics
-
-    #print ("NFM")
-
-
-    #choose topic for each document
-    topics = np.argmax(W_nmf, axis=1)
     df['topic'] = topics
 
     # Save the pickled dataframe for easy access later
-    topic_file = datapath + 'topic_unlabeled.pkl'
-    df.to_pickle(topic_file)
+
+    df.to_pickle(final_pickle)
 
 
     #print ("LDA")
