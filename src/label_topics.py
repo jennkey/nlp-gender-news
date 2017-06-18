@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     #read in pickled data frame with raw topics
     datapath = '/Users/jenniferkey/galvanize/nlp-gender-news/data/{}/'.format(news_paper)
-    topic_unlabeled_file = datapath + 'topic_unlabeled.pkl'
+    topic_unlabeled_file = datapath + 'topic_unlabeled_{}.pkl'.format(news_paper)
     df = pd.read_pickle(topic_unlabeled_file)
 
     # read from stdin or file on command line.
@@ -32,7 +32,8 @@ if __name__ == '__main__':
     # assign topic label to each article
     topic_label = []
     for topic in df['topic']:
-        topic_label.append(topic_label_list[topic])
+        #topic_label.append(topic_label_list[topic])
+        topic_label.append('topic{}'.format(topic))
 
     df['topic_label'] = topic_label
 

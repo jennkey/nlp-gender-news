@@ -8,7 +8,10 @@ from string import punctuation
 from string import printable
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import RegexpTokenizer
-import pattern.en as en
+#from kitchen.text.converters import to_unicode
+#import pattern.en as en
+
+pd.options.display.max_colwidth = 700
 
 #from pandas import compat
 
@@ -25,6 +28,12 @@ def remove_unicode(row):
     return [r.decode('unicode_escape').encode('ascii', 'ignore') for r in row]
     #return ''.join(stripped)
     #return row
+
+#def deal_with_unicode(row):
+#    row = to_unicode(row, 'utf-8').strip()
+#    return row
+    #unicode_row = (to_unicode(r, 'utf-8').strip() for r in row)
+
 
 # function to read records from mongo db
 def read_ajc_mongodb_data():
@@ -49,7 +58,9 @@ def read_den_mongodb_data():
     #df['article'] = df['article'].apply(lambda x: ', '.join(x))
     df['title'] = df['title'].apply(strip_non_ascii)
 
+    #df['article'] = df['article'].apply(deal_with_unicode)
     df['article'] = df['article'].astype('str').apply(strip_non_ascii)
+    #df['article'] = df['article'].astype('str').str.encode('utf-8')
     #df['article'] = df['article'].apply(remove_unicode)
         #df['article'] = df['article'].apply(strip_non_ascii)
     return df
@@ -90,6 +101,8 @@ def clean_text(contents):
     #contents=[w.strip(punctuation) for w in contents if len(w.strip(punctuation))>0]
     pt = set(punctuation)
     contents = contents.apply(lambda x: ''.join([" " if  i in pt else i for i in x]))
+
+
 
     return contents
 
@@ -149,7 +162,8 @@ def lemmatize_article(article):
     # Load Dictionary to fix commonly mislemmatized words
     correct_lemma = fix_lemmatized_words()
     # Lemmatize article by running each word through the pattern.en lemmatizer and only including it in the resulting text if the word doesn't appear in the set of stopwords
-    article = ' '.join([en.lemma(w) for w in article.split() if w not in stop_lemma_words])
+    #article = ' '.join([en.lemma(w) for w in article.split() if w not in stop_lemma_words])
+    article = ' '.join([w for w in article.split() if w not in stop_lemma_words])
     # Return the article text after fixing common mislemmatized words
     return ' '.join([correct_lemma[w] if w in correct_lemma else w for w in article.split()])
 

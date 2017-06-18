@@ -7,7 +7,7 @@ Generating a square wordcloud from the US constitution using default arguments.
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
-def word_cloud(text, plt_file)
+def word_cloud(text, plt_file):
     # Generate a word cloud image
     wordcloud = WordCloud().generate(text)
 

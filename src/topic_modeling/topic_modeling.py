@@ -6,8 +6,9 @@ import pdb
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem.porter import PorterStemmer
-#from nltk.stem.wordnet import WordNetLemmatizer
+from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.stem.lancaster import LancasterStemmer
+from nltk.stem.snowball import SnowballStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF
 from sklearn.decomposition import LatentDirichletAllocation
@@ -206,34 +207,37 @@ if __name__ == '__main__':
     tokenizer = RegexpTokenizer(r"[\w']+")
 
     stop_set = set(stopwords.words('english'))
-    stop_set.update(['said', 'say', 'thing', 'know', 'like', 'thi'])
+    stop_set.update(['said', 'say', 'thing', 'know', 'like', 'thi', 'was', 'has', 'u', 's'
+                     'www', 'ajc'])
 
     #stem = PorterStemmer().stem
     stem = LancasterStemmer().stem
+    #stem = SnowballStemmer('english').stem
+    #stem = WordNetLemmatizer().lemmatize
 
     # NMF is able to use tf-idf
-    tfidf_vectorizer = TfidfVectorizer(max_df=0.95, min_df=1, max_features=no_features, stop_words=stop_set)
+    tfidf_vectorizer = TfidfVectorizer(tokenizer=tokenize, max_df=0.95, min_df=1, max_features=no_features, stop_words=stop_set)
     tfidf = tfidf_vectorizer.fit_transform(contents)
     tfidf_feature_names = tfidf_vectorizer.get_feature_names()
 
     #LDA uses counts
-    tf_vectorizer = CountVectorizer(max_df=0.95, min_df=1, max_features=no_features, stop_words=stop_set)
+    tf_vectorizer = CountVectorizer(tokenizer=tokenize, max_df=0.95, min_df=1, max_features=no_features, stop_words=stop_set)
     tf = tf_vectorizer.fit_transform(contents)
     tf_feature_names = tf_vectorizer.get_feature_names()
 
     # Grid search for right number of topics
-    #grid_number_topics(1, 100, 20)
+    #grid_number_topics(1, 60, 1)
 
     #set topic number
-    W_nmf, H_nmf, topics = perform_NMF(no_topics=50, no_top_words=15, no_top_documents=5)
+    W_nmf, H_nmf, topics = perform_NMF(no_topics=60, no_top_words=15, no_top_documents=5)
 
     #Create word clouds
     #for each topic create a word cloud
-    for topic_indx in range(len(H_nmf)):
-        file_name = plotpath + 'nmf_topic_{}_cloud.png'.format(topic_indx)
-        topic_word_cloud(topic_indx, 100)
-        plt.savefig(file_name, dpi=250)
-        plt.close()
+    # for topic_indx in range(len(H_nmf)):
+    #     file_name = plotpath + 'nmf_topic_{}_cloud.png'.format(topic_indx)
+    #     topic_word_cloud(topic_indx, 100)
+    #     plt.savefig(file_name, dpi=250)
+    #     plt.close()
 
     df['topic'] = topics
 

@@ -1,402 +1,402 @@
 2831
-('reconstruction error:', 42.92982744400709)
+reconstruction error: 43.32374545457847
 Topic 0:
-Number of articles 144:
-get go think thi people want make im one feel work would way dont time
-television drama in recent year have tak
-it hard to imagine gwyneth paltrow here 
-hillary clinton address the graduate cla
-hour after receive a seven page fiery le
-sure a crystal chandelier and a closet t
+Number of articles 188:
+get peopl im think want real would dont us work going ev way tim feel
+its hard to imagine gwyneth paltrow here
+television dramas in recent years have t
+hillary clinton addressed the graduating
+spent two decades bringing his flawed ev
+the washington post like many women lyn 
 Topic 1:
-Number of articles 75:
-trump president administration donald tweet white house obama political new republican hi mail campaign washington
+Number of articles 69:
+trump presid tweet donald admin whit polit hous congress nat washington republ new submit twit
 for a president prone to distraction unu
-i know word i have the best word famousl
-ucif only he would stop tweet ud those w
-washington the first family be together 
-the washington post attorney general for
+i know words i have the best words famou
+if only he would stop tweeting those wor
+for a while it seemed that president don
+washington the first family is together 
 Topic 2:
-Number of articles 137:
-ud ut uci ucthe ure ucit ucwe um uve would get ull one go story
-would over del danica patrick want more 
-new york bob dylan complete hi nobel cou
-it only slightly xaunusual when suzanne 
-adele arakawa outgo new anchor who rule 
-special to the washington post with ucth
+Number of articles 57:
+gam playoff goal scor play cup first point sery three start fan two night second
+pittsburgh the goals that came so easily
+just as goaltender had said during the d
+game hawks at wizardsapril p m philips a
+greetings from ppg paints arena where th
+a loss by one goal or by six goals is in
 Topic 3:
-Number of articles 63:
-comey investigation fbi trump president testimony flynn fire director committee russia conversation intelligence mr hi
-you can read the full testimony from com
-almost a month after he fire by presiden
-here be some of the highlight comey say 
-former fbi director jame comey be testif
-washington former fbi director jame come
+Number of articles 90:
+show radio tv new com ajc air rock talk regul host photo post jun guy
+larry wachs on the regular guys twitter 
+this posted on friday february by rodney
+after eight seasons hardy game show fami
+this posted thursday june by rodney ho r
+this posted september by rodney ho on hi
 Topic 4:
-Number of articles 70:
-pitch hit run inn angel dodger bat inning game homer single walk right two score
-the two men take the mound share an igno
-spend a significant portion of the last 
-in a silent nearly vacant visit clubhous
-they manage nothe and then they can do s
-there a decide lack of buzz around on mo
+Number of articles 88:
+pol investig man arrest search body report found depart block old girl cal sheriff county
+the cause of death of year old kiaya cam
+thornton police and colorado bureau of i
+a suspected eaton motorcycle gang member
+the larimer county coroner identified st
+slow getaway arvada police were dispatch
 Topic 5:
-Number of articles 92:
-police officer man arrest report block woman body street investigation find may search call authority
-a suspect eaton motorcycle gang member c
-the larimer county coroner identify step
-sound asleep on may arvada police office
-official be investigate how officer kill
-slow getaway arvada police be dispatch t
-Topic 6:
-Number of articles 51:
-school student district high education parent teacher board children kid child public choice learn test
-betsy devo today charter school be not a
-more than acre of former wheat field and
-opinion offer more school choice to afri
-a white alabama town get own school dist
-opinion an atlanta school die today vict
-Topic 7:
-Number of articles 40:
-student college campus university education carry class graduate gun program study community programme system speech
-for most of her life angela vera never i
-the model identify in the cover story on
-the campus carry law bring question chal
-the trump administration be suspend two 
-washington xa hannah zwick put herself t
-Topic 8:
 Number of articles 49:
-ossoff handel district th democrat republican voter campaign race georgia vote congressional gop ad percent
-another high power republican group be r
-the unite state chamber of commerce form
+ossoff handel district th democr vot republ rac jon campaign georg congress gop perc candid
+another high powered republican group is
+the united states chamber of commerce fo
 former republican presidential candidate
+just how deeply the june runoff touched 
 an atlanta journal constitution poll rel
-just how deeply the june runoff touch ge
+Topic 6:
+Number of articles 81:
+hit brav run pitch bat hom gam bas walk dodg start four doubl two field
+freddie freeman been one of the three be
+but with exactly one ninth of the season
+miami the braves have lost eight of nine
+in a silent nearly vacant visiting clubh
+milwaukee it wasnt long ago when a major
+Topic 7:
+Number of articles 87:
+stud school schools educ teach district high colleg par program camp childr gradu univers kid
+opinion an atlanta school died today vic
+betsy devos today charter schools are no
+as studies find vouchers dont improve ac
+student posts images of black classmates
+a san francisco bay area school district
+Topic 8:
+Number of articles 53:
+play team leagu hes basebal guy field coach defend star best good stad going mexico
+a girls youth soccer team disqualified f
+a draw is soccers way of separating the 
+unlike many nhl teams the avs on tuesday
+one of the more interested observers at 
+england won the under by beating venezue
 Topic 9:
-Number of articles 59:
-team player season league play baseball year field star basketball last championship go mexico next
-a girl youth soccer team disqualify from
-unlike many nhl team the av on tuesday d
-lake forest el toro high baseball player
-no les of a coach than pete carroll of t
-would enver post prep editor kyle newman
+Number of articles 96:
+mus song perform band sing stag award crowd play produc tour ev hal rock fan
+your mnf musical crew
+paul simon gets his groove on branden ca
+he isnt the most charismatic performer e
+pitbull and prince royce are about halfw
+the familiar strains of lets go crazy an
 Topic 10:
-Number of articles 37:
-hi father man career year son wife life old family die death make later daughter
-japanese crown prince naruhito pledge tu
-helmut kohl the long serve former chance
-pitbull and prince royce be about halfwa
-hi clay court prowes a unassailable a ev
-yep i m mr worldwide akili casundria ram
+Number of articles 33:
+n crim xa denv st dog av rock block e man al th jon custom
+a drop of dry xano matter how many totes
+a routt county judge ruled friday that a
+as denvers third annual event prepares t
+are gional transportation district light
+would espite big run ups in home prices 
 Topic 11:
-Number of articles 103:
-company stock technology employee billion price fall busines firm executive rise store market chief board
-unite state stock bounce back to record 
-unite state stock index slip again monda
-silicon valley know well the aggressive 
-the bad boy of silicon valley a company 
-unite state stock fall thursday a techno
-Topic 12:
 Number of articles 28:
-cosby constand assault testimony defense testify bill judge drug interview lawyer women charge case daughter
-bill cosby arrive for hi sexual assault 
-the associate press norristown pa bill c
+cosby assault sex testimony tri prosecut accus wom defens test judg bil interview alleg drug
+the associated press norristown pa bill 
+ap photojury deciding comic actor bill c
 an unusually specific picture of recent 
 imperfect husband or sick man victim of 
-norristown pa bill cosby acknowledge to 
+bill cosby arrives for his sexual assaul
+Topic 12:
+Number of articles 42:
+atlant ajc georg traff dant yo park spring brav annount loc facebook report resta com
+headed downtown to an event at centennia
+to celebrate the opening of the first ev
+the collapse of i in atlanta made commut
+following their departure from the atlan
+for those who have not gotten on the pok
 Topic 13:
-Number of articles 76:
-home room square property house space feet build kitchen floor live estate area sale outdoor
-what complete in mclain flatter road be 
-it not every day that a acre property al
-a detail staircase dominate the two leve
-charle zegar billionaire computer scient
-in the month of may the most expensive h
+Number of articles 69:
+hom room property squ hous spac feet liv flo built design est list sal feat
+its not every day that a acre property a
+charles zegar billionaire computer scien
+what completed in mclain flats road is a
+a beachwood canyon home where early holl
+its rarely obvious that a hollywood star
 Topic 14:
-Number of articles 76:
-game warrior playoff final point play goal nba score win jame first sery golden cup
-oakland calif the addition of kevin dura
-just a goaltender have say dure the dark
-pittsburgh the goal that come so easily 
-game hawk at wizardsapril p m philip are
-oakland calif seven technical foul one f
+Number of articles 73:
+company employ busy firm work execut produc invest brand industry board chief bil new job
+the bad boy of silicon valley a company 
+silicon valley knew well the aggressive 
+leaving early on a friday afternoon in j
+xathe washington post the percentage of 
+noble energy on wednesday said it will s
 Topic 15:
-Number of articles 70:
-state unite mexico country american military official force attack world international group nation security war
-washington president donald trump say th
-an arm drone fire on unite state back co
-german chancellor angela merkel tell a c
-even a hi top advisor seek to defuse an 
-three american service member be kill an
+Number of articles 49:
+colorado denv xa stat mountain park submit wat loc story run post john edit jun
+a voter created water conservation board
+while colorado doesnt typically see the 
+colorado springs runners didnt expect to
+on behalf of the colorado hospital assoc
+colorado will begin shifting away from s
 Topic 16:
-Number of articles 60:
-shoot gun attack rep capitol baseball fire republican violence practice wednesday field member lawmaker thi
-a rare act of apparent political violenc
-a capitol hill police officer stand hi p
-the house of representative postpone mos
+Number of articles 55:
+sen bil hous legisl republ heal gop democr law tax congress rep r sess lawmak
+are facing increasing criticism for duck
+gov john hickenlooper will allow two mea
+as president donald trump on friday decl
+as president donald trump meets tuesday 
+asked about russia mr trump said it is t
+Topic 17:
+Number of articles 109:
+film movy star charact direct act wom produc writ story play war scen cast feat
+hello im and welcome to another edition 
+universal pictures built its legacy with
+the associated press london sir roger mo
+early in his career filmmaker bill morri
+photo credit gene page amcdanai gurira k
+Topic 18:
+Number of articles 59:
+shoot gun shot fir basebal capitol rep congress pract viol republ wednesday field memb victim
+house majority whip r la shot at a repub
 it may take some time before we learn th
 house majority whip r la and four other 
-Topic 17:
-Number of articles 58:
-colorado denver state xa spring submit mountain mail west letter post water university outdoor community
-a voter create water conservation board 
-while colorado doesn ut typically see th
-colorado will begin shift away from stan
-on behalf of the colorado hospital assoc
-grow up in rural granby i see somethe th
-Topic 18:
-Number of articles 97:
-film movie star character actor play director direct story war role theater feature scene thi
-hello im and welcome to another edition 
-early in hi career filmmaker bill morris
-universal picture build it legacy with h
-the comedy star atlanta native ed helm a
-photo credit gene page amcdanai gurira k
+a capitol hill police officer stands his
+thats the toll of mass shootings in geor
 Topic 19:
-Number of articles 62:
-city council project resident park plan street neighborhood people community station development build new official
-on tuesday the la caada flintridge city 
-the burbank city council unanimously vot
-find a place to park in old towne orange
-newport dune waterfront resort be consid
-local street artist and city official be
+Number of articles 31:
+p jun perform cent sunday fre st new feat july c pac star saturday www
+philip brandes p b f kathleen foley f k 
+the hit musical natasha pierre the great
+the will play eight exhibition games bef
+this posted sunday june by rodney ho rho
+when writer director theodore witchers r
 Topic 20:
-Number of articles 56:
-bill house senate health republican care tax gop law would democrat measure congress pass vote
-a president donald trump on friday decla
-ask about russia mr trump say it be time
-have learn from their colleague in the h
-be face increase criticism for duck publ
-a president donald trump meet tuesday wi
+Number of articles 19:
+mil accord contract read inform report auth cent year gre serv pac last post cre
+a shallow magnitude earthquake reported 
+a shallow magnitude earthquake reported 
+a shallow magnitude earthquake reported 
+a shallow magnitude earthquake reported 
+a shallow magnitude earthquake reported 
 Topic 21:
-Number of articles 78:
-show season tv new fox sery thi air radio network host star ajc perform talk
-thi post tuesday june by rodney ho rho a
-nigel lythgoe be best know to tv viewer 
-thi post on wednesday june by rodney ho 
-after lengthy negotiation nene leake on 
-thi be tuesday june by rodney ho rho ajc
+Number of articles 46:
+stat unit mexico country world nat op immigr russ sec qual intern travel cup milit
+washington president donald trump said t
+german chancellor angela merkel told a c
+three american service members were kill
+a years old dispute over whether to impo
+vice president mike pence and three memb
 Topic 22:
-Number of articles 72:
-court case judge law rule attorney sentence order federal lawsuit ban appeal legal decision charge
-another federal appeal court refuse on m
-the colorado supreme court rule that con
-a federal appeal court on monday refuse 
-it decision time at the a the justice pr
-can president donald trump u anti muslim
+Number of articles 107:
+court cas judg attorney sent law prosecut prison charg county alleg fed rul lawsuit sheriff
+forty years ago a year old girl clutched
+the woman roman polanski convicted of se
+the colorado supreme court ruled that co
+its decision time at the as the justices
+no matter that she an hour away michelle
 Topic 23:
-Number of articles 52:
-atlanta ajc restaurant traffic thi youre spring facebook scene announce bar story com follow park
-follow their departure from the atlanta 
-update atlanta ballet release the follow
-to celebrate the open of the first ever 
-atlanta theatergoer will be able to glob
-take a trip to ethiopia with the veggie 
+Number of articles 50:
+driv car vehic rid rac ind engin traff test seat hospit saf med per stop
+wave goodbye to the road trip as we know
+would envers cargo users will start seei
+its official plans to develop technology
+a driver injured when his vehicle clippe
+if you are looking to go green with your
 Topic 24:
-Number of articles 20:
-degree high service denver expect afternoon chance friday saturday monday weekend sunday national thursday week
-sunshine and strong wind be forecast alo
-brisk wind thunderstorm and rain be expe
-temperature will rise into the for the n
-stormy weather include rain and thunder 
-forecaster predict afternoon rain and th
+Number of articles 52:
+perc tax rat pay increas county fed low sal employ fund year cost market econom
+many san diegans would like to own a hom
+metro denvers percent unemployment rate 
+opinion can we do better with georgias t
+the quarterback long been considered the
+a chart published last month by the euro
 Topic 25:
-Number of articles 92:
-music song band musical stage tour perform crowd play award hall fan performance show hit
-paul simon get hi groove on branden camp
-he isnt the most charismatic performer e
-kesha have a blast on stage at music mid
-well at least saturday sunny the second 
-at p m sharp the avett brother creep ont
+Number of articles 41:
+round draft pick th select overal first second high play colleg school hand seny top
+the nhl on thursday announced the offici
+after four former colorado high school s
+after regis jesuit graduate david peters
+new york another rocket is headed to tor
+new york darren baker got scooped up by 
 Topic 26:
-Number of articles 45:
-rocky black pitch game baseball era field pitcher league start mountain inning colorado jeff season
-would enver post sport writer patrick sa
-the rocky on thursday call up catcher to
-the split be shock and mike dunn know it
-be charlie blackmon or greg holland the 
-it u be day since jon gray pitch in a ga
+Number of articles 39:
+vot elect party polit may democr seat conserv min govern campaign prim candid republ lead
+british prime minister called a snap ele
+a proposal backed by the colorado secret
+britains opposition leader jeremy corbyn
+britains election a catastrophe for cons
+its happened again the leader of a mains
 Topic 27:
-Number of articles 49:
-angele lo west olympic san hollywood california march air time la story beach point event
-a a wartime promotion the lo angele time
-follow world war ii the lo angele time e
-candace parker score point chelsea gray 
-lo angele be home to hot tech firm such 
-visitor to lo angele international airpo
+Number of articles 27:
+falcon meet defend end jon hon round back pass pract run guard return wid ryan
+the falcons used their moore finished wi
+ifedi who spent parts of the last two se
+flowery branch falcons safety william mo
+the falcons have players under contract 
+the first practice is set for july flowe
 Topic 28:
-Number of articles 28:
-falcon meet end jone pass back honor sign practice play guard run return season ryan
-the falcon used their moore finish with 
-ifedi who spend part of the last two sea
-flowery branch falcon safety william moo
-flowery branch falcon coach dan quinn pu
-the falcon have player under contract wi
+Number of articles 38:
+angel los l san californ tim hollywood march port la point story county scor singl
+as a wartime promotion the los angeles t
+following world war ii the los angeles t
+candace parker scored points chelsea gra
+los angeles is home to hot tech firms su
+in a march los angeles times story staff
 Topic 29:
 Number of articles 51:
-race win cup victory finish champion second year track johnson first run driver time final
-turn a lap of mph on friday to win the p
-would etroit graham rahal be relish a re
-would over del jimmie johnson sped off o
-concord n c austin dillon pass an out of
-a year ago in the coca cola at charlotte
+rocky pitch cub black field er start basebal gam leagu right hit hand run good
+the splits are shocking and mike dunn kn
+its been days since jon gray pitched in 
+would enver post sports writer patrick s
+chicago the wind blowing out at wrigley 
+pitcher chad bettis returned to the colo
 Topic 30:
-Number of articles 38:
-brave season game hit homer bat major get start go base nine spring three baseball
-freddie freeman be one of the three best
-but with exactly one ninth of the season
-miami i talk with a senior scout for a n
-miami so there panic on the street of bu
-there panic in the burb and also all the
-Topic 31:
-Number of articles 94:
-food restaurant store open shop location whole customer drink bar make market serve kitchen brand
-there be lot of drama thi past week at l
-the latest steakhouse and sushi bar kata
-jeff chon and christian fernandez be bec
-mali hu chief operate officer for katana
-daily camera the good food the brainchil
-Topic 32:
-Number of articles 19:
-winner reality daughter media mother name arrest post hear document town charge phone graduate new
-reality winner yearbook photo kingsville
-dure reality leigh winner bond hear last
-hang on let me call my friend she instru
-the word sound a lot like a confession m
-reality winner high school graduation ph
-Topic 33:
-Number of articles 30:
-session russia russian attorney general sen question committee investigation intelligence ask senate answer campaign senator
-amid question about the investigation of
-here be a rundown of today hear pm chair
-the unite state attorney general denounc
-attorney general jeff session will appea
-i have never meet with or have any conve
-Topic 34:
-Number of articles 46:
-car vehicle driver drive ride price get seat per buy test new steal may offer
-buy a car be a major expense that especi
-would enver u cargo user will start see 
-if you be look to go green with your nex
-wave goodbye to the road trip a we know 
-sell a car yourself might sound simple e
-Topic 35:
-Number of articles 41:
-georgia state kill name ajc officer law gun report public new county sound university death
-a member flee georgia pta risk statu sta
-that the toll of mass shooting in georgi
-the adorable georgia coyote with a gp co
-twenty five dead sixty nine wound that t
-state wildlife official a eager to kill 
-Topic 36:
-Number of articles 41:
-party election vote may voter conservative seat government campaign leader majority candidate political democratic would
-british prime minister call a snap elect
-britain opposition leader jeremy corbyn 
-a defiant vow to stay on a prime ministe
-the two top aide to british prime minist
-london beleaguer british prime minister 
-Topic 37:
-Number of articles 35:
-com june photo twitter http www ajc tweet post co ticket video full tour st
-a tornado warn issue for northeastern co
-the use of the slur both jar and confoun
-getty imagescomic bill maher stir contro
-when writer director theodore witcher ro
-it u time to celebrate colorado dad they
-Topic 38:
-Number of articles 35:
-bank financial account credit federal money america customer report change fund power well smith rate
-the house vote along party line thursday
-co will guarantee that customer harm by 
-online lender and financial start up sof
-a part of a class action settlement co w
-the treasury department on monday call f
-Topic 39:
-Number of articles 43:
-coach football former head university season report college violence championship basketball title state program three
-former university of colorado football a
-norman okla just three year ago lincoln 
-new york al pacino will star a late penn
-the university of colorado board of rege
-below be the full report of the two exte
-Topic 40:
-Number of articles 41:
-marijuana plant drug medical law product industry grow state legal federal sell ad rule use
-just in time for the long independence d
-a former colorado marijuana enforcement 
-colorado may be the laboratory for test 
-sacramento calif california would set st
-quincy mass a massachusetts medical mari
-Topic 41:
-Number of articles 60:
-round draft pick laker th overall first player second ball nba college guard high season
-after four former colorado high school s
-after regi jesuit graduate david peterso
-new york another rocket be head to toron
-rocky manager bud black twice skip a cha
-the nhl on thursday announce the officia
-Topic 42:
-Number of articles 37:
-million year contract project list fund money cost deal pay last budget total spend top
-cristiano ronaldo be once again the high
-new york sean ucdiddy ud comb be the top
-the newport beach city council will vote
-the newport beach city council pass a ro
-the mummy leap to life thi week at the c
-Topic 43:
-Number of articles 37:
-lane road close traffic vehicle fire project drive construction department friday monday driver weekend trip
-here a list of the work in metro atlanta
-plan to travel thi weekend the georgia d
-thank to the georgia department of trans
-if you want to see how the state plan to
-the georgia department of transportation
-Topic 44:
-Number of articles 73:
-county sheriff department deputy death office drug search authority official accord die arrest medical investigation
-the department will supply thousand of f
-adam county sheriff u investigator have 
-the garfield county sheriff u office arr
-donnie russell rowe left and ricky dubos
-a year old wyom girl kill sunday afterno
-Topic 45:
-Number of articles 31:
-bronco denver june practice hold super get football um uve xa sign play ut back
-the denver bronco hold a mandatory minic
-the denver bronco hold a mandatory minic
-tom graham a former bronco linebacker xa
-in walter camp conceive a set of ucfootb
-thi offseason the denver bronco have a n
-Topic 46:
-Number of articles 44:
-percent rate tax increase price market year cost sale average job worker number low lower
-many san diegan would like to own a home
-washington the federal reserve raise it 
-metro denver u percent unemployment rate
-the quarterback long be consider the mos
-a chart publish last month by the europe
-Topic 47:
 Number of articles 32:
-rock station regular guy radio morn show river year monday air talk im top line
-jason bailey who spend a year at the gam
-larry wach at steve rickman wed earlier 
-at about thi morn i officially relieve o
-thi post september by rodney ho on hi aj
-larry wach on the regular guy twitter pa
+denv degr high serv expect friday chant jun saturday weekend monday week thursday sunday low
+sunshine and strong winds are forecast a
+temperatures will rise into the for the 
+the denver area could experience degree 
+saturdays temperatures in the metro area
+brisk winds thunderstorms and rain are e
+Topic 31:
+Number of articles 114:
+project board develop plan build environ propos would program commit design energy construct protect air
+a decades long fight by real estate and 
+a former veterans affairs department exe
+a group of residents filed an appeal aga
+the obama administrations plan to save t
+few residential properties are as desira
+Topic 32:
+Number of articles 39:
+fest art cre col day piec visit gard design year org weekend collect saturday feat
+duluth will join the list of metro citie
+beginning in the spring several atlanta 
+the bicycle tower at paradise garden is 
+created by the late self taught artist h
+rickey and maxey at maxey folk art in go
+Topic 33:
+Number of articles 69:
+resta food din op loc plat serv bar whol facebook us scen tradit ad includ
+theres been lots of drama this past week
+the latest steakhouse and sushi bar kata
+go down the few blocks of fairfax avenue
+new restaurant concept mandolin mediterr
+mali hu chief operating officer for kata
+Topic 34:
+Number of articles 60:
+win rac cup champ fin vict second year match track first sunday saturday run titl
+funeral for an old friend randall grahm 
+we happened to be enjoying a bonny doon 
+new york the mystery surrounding the jap
+will austin aries finally topple neville
+indianapolis at the end of miles around 
+Topic 35:
+Number of articles 27:
+lak bal fox draft guard pick basketbal point johnson forward fath second nba facil work
+it not possible to draw a definitive con
+el segundo calif with the ball in his ha
+for his first workout with the lakers ca
+peered over his right shoulder when abou
+whenever chaos engulfed the basketball t
+Topic 36:
+Number of articles 52:
+stor retail shop brand custom clos loc op onlin mal sal pric sel buy produc
+longtime eagle rock resident allenby ara
+the parent of ann taylor lane bryant and
+walmart will shutter two stores in arvad
+the itp populace that oft rails against 
+warby parker an online purveyor of xahip
+Topic 37:
+Number of articles 32:
+lan road clos traff transport georg depart travel fir construct monday friday weekend mot county
+thanks to the georgia department of tran
+heres a list of the work in metro atlant
+planning to travel this weekend the geor
+the georgia department of transportation
+the highway been closed between i and ga
+Topic 38:
+Number of articles 34:
+bank fin reg fed account credit consum pay custom money man econom report chang americ
+co will guarantee that customers harmed 
+online lender and financial start up sof
+the house on thursday voted to free wall
+with the financial system imploding in t
+as part of a class action settlement co 
+Topic 39:
+Number of articles 47:
+season year last tim return contract two injury start week back three fin trad next
+loveland ski area closed for the season 
+this posted on wednesday june by rodney 
+seattle the seattle mariners have agreed
+after lengthy negotiations nene leakes o
+would efenseman francois beauchemin will
+Topic 40:
+Number of articles 38:
+marijuan drug med law leg industry produc fed pot enforc stat reg paty busy us
+just in time for the long independence d
+sacramento calif california would set st
+a former colorado marijuana enforcement 
+would eputy attorney general rod rosenst
+colorado may be the laboratory for testi
+Topic 41:
+Number of articles 30:
+west hollywood march rol famy sery riv died land county book year nat lak may
+adam west the iconic star of the campy b
+one of the most significant listings in 
+adam west who donned a cape cowl and tig
+los angeles the family of adam west whos
+is leaving the champion to join forces w
+Topic 42:
+Number of articles 29:
+stock ros fel pric invest energy company cent technolog point trad market econom shar drop
+wall street had an uneven finish friday 
+united states stock indexes veered mostl
+financial companies led united states st
+united states stock indexes slipped agai
+united states stocks are mixed wednesday
+Topic 43:
+Number of articles 55:
+city council park resid neighb peopl street plan propos approv commun loc meet access build
+on tuesday the la caada flintridge city 
+newport dunes waterfront resort is consi
+the burbank city council unanimously vot
+the city of los angeles is poised to set
+finding a place to park in old towne ora
+Topic 44:
+Number of articles 37:
+warry nba jam gold point fin champ team titl stat shot basketbal star year first
+cleveland kevin durant drained the shot 
+oakland calif the last time lebron james
+chaos reigned friday night as the beat b
+oakland calif the golden state warriors 
+oakland calif as the gold confetti fell 
+Topic 45:
+Number of articles 29:
+olymp athlet host commit gam sport la world intern award competit basketbal russ par ev
+lausanne switzerland fast food chain mcd
+would enver tucked into the more than mi
+colorado springs a groundbreaking ceremo
+los angeles evaluating los angeles readi
+three executives from japan loom large i
+Topic 46:
+Number of articles 91:
+comey russ investig sess fbi trump sen presid testimony fir flyn intellig convers direct commit
+almost a month after he fired by preside
+former fbi director james comey is testi
+here is the latest from capitol hill pm 
+here are some of the highlights comey sa
+washington former fbi director james com
+Topic 47:
+Number of articles 50:
+attack ir milit kil ter al group peopl forc govern war country fight civil sec
+iran suffered its worst terrorist attack
+police increased patrols in the streets 
+thousands filled the streets of the capi
+dozens of soldiers were killed early thu
+funerals began friday morning in the ira
 Topic 48:
-Number of articles 48:
-festival artist art garden museum music day event plant weekend year piece saturday design free
-duluth will join the list of metro city 
-begin in the spring several atlanta city
-the bicycle tower at paradise garden be 
-create by the late self teach artist how
-imagine festival and it colorful surroun
+Number of articles 52:
+coach footbal colleg univers alleg head form athlet assist camp report georg champ viol basketbal
+norman okla like a well executed blitz b
+norman okla just three years ago lincoln
+it stings like a slap in the face in the
+former university of colorado football a
+new york al pacino will star as late pen
 Topic 49:
-Number of articles 16:
-mile accord center information read post service report thi create day write come point last
-a shallow magnitude earthquake report th
-a shallow magnitude earthquake report we
-a shallow magnitude earthquake report th
-a shallow magnitude earthquake report fr
-a shallow magnitude earthquake center at
+Number of articles 38:
+plant gard grow wat tre pow californ produc energy sum leav food nee larg us
+i wish i had a nickel for every perennia
+houzz new zealand contributor journalist
+want a garden with show stopping appeal 
+shop for cactuses succulents california 
+why are we happy around flowers rutgers 

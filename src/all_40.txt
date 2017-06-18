@@ -1,0 +1,322 @@
+2831
+reconstruction error: 44.226739671783236
+Topic 0:
+Number of articles 203:
+peopl get think us want im would real work dont ev going way mak feel
+its hard to imagine gwyneth paltrow here
+television dramas in recent years have t
+hillary clinton addressed the graduating
+spent two decades bringing his flawed ev
+made light of his public relationship wi
+Topic 1:
+Number of articles 92:
+comey trump presid investig fbi testimony russ flyn direct clinton fir convers form mr counsel
+in an explosive hearing former director 
+washington president donald trump assert
+washington president donald trump refuse
+washington the latest on developments in
+former director feared from their first 
+Topic 2:
+Number of articles 44:
+brav season hit gam hom maj op start catch spring hes bat nin three train
+miami i talking with a senior scout for 
+miami so theres panic on the streets of 
+freddie freeman been one of the three be
+the braves are considering options for a
+the atlanta braves have called champion 
+Topic 3:
+Number of articles 111:
+show tv radio new air com talk season rock tim regul host post photo fox
+this posted on friday february by rodney
+after eight seasons hardy game show fami
+this posted thursday june by rodney ho r
+larry wachs on the regular guys twitter 
+this posted september by rodney ho on hi
+Topic 4:
+Number of articles 87:
+pol man investig body arrest search found block report wom cal may miss old girl
+slow getaway arvada police were dispatch
+a suspected eaton motorcycle gang member
+the larimer county coroner identified st
+london british police have arrested two 
+a juvenile wanted on several felony and 
+Topic 5:
+Number of articles 49:
+ossoff handel district th vot democr republ rac jon campaign georg perc congress gop candid
+another high powered republican group is
+the united states chamber of commerce fo
+former republican presidential candidate
+just how deeply the june runoff touched 
+an atlanta journal constitution poll rel
+Topic 6:
+Number of articles 71:
+pitch hit run bat hom dodg angel walk singl bas third start field two left
+the two men took the mound sharing an ig
+in a silent nearly vacant visiting clubh
+spent a significant portion of the last 
+it a weekend of firsts for on saturday h
+a season defined by adaptation and exper
+Topic 7:
+Number of articles 72:
+school stud schools educ district teach high par childr program kid board child test learn
+opinion an atlanta school died today vic
+betsy devos today charter schools are no
+as studies find vouchers dont improve ac
+after years as a k parent im done five p
+student posts images of black classmates
+Topic 8:
+Number of articles 99:
+play team coach season leagu year footbal hes defend basebal champ basketbal guy last field
+flowery branch the falcons named marquan
+here are the five things we learned he s
+buffalo n y phil housley began his hall 
+its a mid june early morning in the arap
+most of kayvon websters snaps came on sp
+Topic 9:
+Number of articles 104:
+mus song perform band sing stag award play crowd tour rock produc hal ev show
+your mnf musical crew
+paul simon gets his groove on branden ca
+he isnt the most charismatic performer e
+pitbull and prince royce are about halfw
+the familiar strains of lets go crazy an
+Topic 10:
+Number of articles 34:
+n crim denv xa st dog rock av block e man th al custom jon
+a drop of dry xano matter how many totes
+a routt county judge ruled friday that a
+as denvers third annual event prepares t
+are gional transportation district light
+would espite big run ups in home prices 
+Topic 11:
+Number of articles 29:
+cosby assault sex testimony prosecut tri accus defens wom test judg alleg bil interview charg
+the associated press norristown pa bill 
+ap photojury deciding comic actor bill c
+imperfect husband or sick man victim of 
+an unusually specific picture of recent 
+bill cosby arrives for his sexual assaul
+Topic 12:
+Number of articles 61:
+gam playoff play goal scor cup point first sery olymp three fan fin minut night
+pittsburgh the goals that came so easily
+just as goaltender had said during the d
+greetings from ppg paints arena where th
+game hawks at wizardsapril p m philips a
+a loss by one goal or by six goals is in
+Topic 13:
+Number of articles 81:
+hom room property squ hous spac feet liv design built flo est sal list feat
+its not every day that a acre property a
+what completed in mclain flats road is a
+a beachwood canyon home where early holl
+charles zegar billionaire computer scien
+its rarely obvious that a hollywood star
+Topic 14:
+Number of articles 48:
+atlant georg traff park dant yo annount loc spring facebook resta com tour transport constitut
+headed downtown to an event at centennia
+to celebrate the opening of the first ev
+atlanta theatergoers will be able to glo
+the collapse of i in atlanta made commut
+following their departure from the atlan
+Topic 15:
+Number of articles 66:
+colorado denv stat xa wat mountain park loc submit run jun riv post john story
+a voter created water conservation board
+while colorado doesnt typically see the 
+colorado springs runners didnt expect to
+colorado will begin shifting away from s
+on behalf of the colorado hospital assoc
+Topic 16:
+Number of articles 63:
+sen trump hous bil republ congress democr legisl gop heal presid rep whit r would
+the associated press washington presiden
+as president donald trump meets tuesday 
+the president will welcome representativ
+as president donald trump on friday decl
+asked about russia mr trump said it is t
+Topic 17:
+Number of articles 108:
+film movy charact star direct act writ wom story produc play war scen rol hollywood
+hello im and welcome to another edition 
+universal pictures built its legacy with
+the associated press london sir roger mo
+photo credit gene page amcdanai gurira k
+early in his career filmmaker bill morri
+Topic 18:
+Number of articles 65:
+shoot gun shot fir attack basebal capitol kil rep viol peopl pract victim congress wednesday
+house majority whip r la shot at a repub
+it may take some time before we learn th
+house majority whip r la and four other 
+thats the toll of mass shootings in geor
+twenty five dead sixty nine wounded that
+Topic 19:
+Number of articles 34:
+p jun perform cent sunday season fre st feat july l new friday monday saturday
+philip brandes p b f kathleen foley f k 
+the hit musical natasha pierre the great
+this posted sunday june by rodney ho rho
+the will play eight exhibition games bef
+when writer director theodore witchers r
+Topic 20:
+Number of articles 30:
+mil accord contract report read year inform last auth cent gre pac serv cre post
+a shallow magnitude earthquake reported 
+a shallow magnitude earthquake reported 
+a shallow magnitude earthquake reported 
+a shallow magnitude earthquake reported 
+a shallow magnitude earthquake reported 
+Topic 21:
+Number of articles 34:
+sess russ sen comey attorney investig quest gen intellig ask commit answ hear fir convers
+amid questions about the investigation o
+here is a rundown of todays hearing pm c
+attorney general jeff sessions will appe
+the united states attorney general denou
+i have never met with or had any convers
+Topic 22:
+Number of articles 75:
+court judg cas rul law fed immigr ord attorney ap ban lawsuit leg decid viol
+another federal appeals court refused on
+a federal appeals court on monday refuse
+could president donald trumps anti musli
+its decision time at the as the justices
+seattle another united states appeals co
+Topic 23:
+Number of articles 74:
+driv vehic car road lan traff transport rid clos fir engin rac test saf stop
+wave goodbye to the road trip as we know
+lane splitting long been a controversial
+a driver injured when his vehicle clippe
+its official plans to develop technology
+would envers cargo users will start seei
+Topic 24:
+Number of articles 106:
+company stock invest technolog employ ros fel busy execut firm pric market energy chief new
+united states stocks bounced back to rec
+united states stock indexes slipped agai
+silicon valley knew well the aggressive 
+united states stocks fell thursday as te
+the bad boy of silicon valley a company 
+Topic 25:
+Number of articles 67:
+win rac cup champ fin vict second year track match first sunday titl saturday sport
+new york the mystery surrounding the jap
+funeral for an old friend randall grahm 
+we happened to be enjoying a bonny doon 
+will austin aries finally topple neville
+indianapolis at the end of miles around 
+Topic 26:
+Number of articles 55:
+elect vot party polit may min conserv seat govern democr lead prim campaign candid presid
+british prime minister called a snap ele
+britains election a catastrophe for cons
+britains opposition leader jeremy corbyn
+a defiant vowed to stay on as prime mini
+its happened again the leader of a mains
+Topic 27:
+Number of articles 68:
+round draft falcon pick th select overal first play lak second meet guard defend high
+flowery branch falcons running back anto
+the first practice is set for july flowe
+flowery branch the falcons have conclude
+the nhl on thursday announced the offici
+after four former colorado high school s
+Topic 28:
+Number of articles 94:
+city council angel project los resid propos build plan olymp park commit l develop approv
+newport dunes waterfront resort is consi
+on tuesday the la caada flintridge city 
+the city of los angeles is poised to set
+a key panel of the endorsed a plan wedne
+members of the la caada flintridge city 
+Topic 29:
+Number of articles 50:
+rocky pitch cub black basebal er field gam leagu start colorado good season jeff right
+the splits are shocking and mike dunn kn
+would enver post sports writer patrick s
+its been days since jon gray pitched in 
+chicago the wind blowing out at wrigley 
+the rockies on thursday called up catche
+Topic 30:
+Number of articles 34:
+denv degr high serv expect friday chant saturday weekend monday jun week sunday thursday low
+sunshine and strong winds are forecast a
+temperatures will rise into the for the 
+brisk winds thunderstorms and rain are e
+saturdays temperatures in the metro area
+the denver area could experience degree 
+Topic 31:
+Number of articles 86:
+perc tax rat fed pay increas fund employ econom bank low year would cost money
+washington the federal reserve raised it
+xadow jones newswires washington the fed
+many san diegans would like to own a hom
+opinion can we do better with georgias t
+washington the washington political worl
+Topic 32:
+Number of articles 46:
+fest art gard cre col day design piec visit weekend year collect org park saturday
+the bicycle tower at paradise garden is 
+created by the late self taught artist h
+duluth will join the list of metro citie
+beginning in the spring several atlanta 
+rickey and maxey at maxey folk art in go
+Topic 33:
+Number of articles 86:
+resta food din op loc serv plat bar whol us facebook scen includ day ad
+theres been lots of drama this past week
+the latest steakhouse and sushi bar kata
+go down the few blocks of fairfax avenue
+new restaurant concept mandolin mediterr
+mali hu chief operating officer for kata
+Topic 34:
+Number of articles 52:
+marijuan plant drug law med gard grow produc industry leg reg pot stat enforc us
+colorado may be the laboratory for testi
+just in time for the long independence d
+sacramento calif california would set st
+a former colorado marijuana enforcement 
+californian gardeners can mix marijuana 
+Topic 35:
+Number of articles 54:
+warry nba jam point gold lak fin champ west team basketbal bal stat guard titl
+cleveland kevin durant drained the shot 
+oakland calif the last time lebron james
+chaos reigned friday night as the beat b
+oakland calif as the gold confetti fell 
+oakland calif lebron james and kyrie irv
+Topic 36:
+Number of articles 54:
+stor retail shop clos brand custom loc op onlin mal pric sal sel buy food
+longtime eagle rock resident allenby ara
+the parent of ann taylor lane bryant and
+walmart will shutter two stores in arvad
+the itp populace that oft rails against 
+warby parker an online purveyor of xahip
+Topic 37:
+Number of articles 98:
+stat unit milit trump mexico country ir nat attack presid forc sec world govern al
+washington president donald trump said t
+even as his top advisors sought to defus
+german chancellor angela merkel told a c
+an armed drone fired on united states ba
+three american service members were kill
+Topic 38:
+Number of articles 53:
+colleg camp univers stud georg carry gun coach footbal program stat gradu deal law class
+the campus carry law brings questions ch
+as colleges figure out how to accommodat
+dekalb student to governor veto campus c
+nathan deal signs campus carry allowing 
+campus carry backlash if governor wouldn
+Topic 39:
+Number of articles 94:
+county sheriff investig depart alleg dea deputy prison charg report arrest drug sent attorney accord
+adams county sheriffs investigators have
+donnie russell rowe left and ricky dubos
+two inmates donnie russell row left and 
+the garfield county sheriffs office arre
+the department will supply thousands of 

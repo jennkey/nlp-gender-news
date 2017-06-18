@@ -13,9 +13,9 @@ from gender_bubble_plot import gender_bubble_plot
 from collections import Counter
 from nltk.corpus import stopwords
 import sys
+from nltk.tokenize.punkt    import PunktSentenceTokenizer
 
-
-tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+#tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
 
 #Two lists  of words that are used when a man or woman is present, based on Danielle Sucher's https://github.com/DanielleSucher/Jailbreak-the-Patriarchy
@@ -221,9 +221,10 @@ if __name__ == '__main__':
         proper_nouns={}
 
         #Not sure I need this anymore test it
-        article = filter(lambda x: x in string.printable, article)
+        #article = filter(lambda x: x in string.printable, article)
 
         #Split into sentences
+        tokenizer = PunktSentenceTokenizer()
         sentences=tokenizer.tokenize(article)
 
         for sentence in sentences:
