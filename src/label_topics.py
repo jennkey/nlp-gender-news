@@ -6,11 +6,6 @@ import csv
 
 if __name__ == '__main__':
 
-    topic_label_list = []
-    for i in range(50):
-        topic_label_list.append('topic{}'.format(i))
-    print(topic_label_list)
-
     news_paper = sys.argv[1]
 
     #read in pickled data frame with raw topics
@@ -19,21 +14,21 @@ if __name__ == '__main__':
     df = pd.read_pickle(topic_unlabeled_file)
 
     # read from stdin or file on command line.
-    labels_file = datapath + 'topics_labels.csv'
-    # topic_label_list = []
-    # with open(labels_file, 'rb') as csvfile:
-    #     labelreader = csv.reader(csvfile)
-    #     for row in labelreader:
-    #         print row
-    #         topic = ', '.join(row)
-    #         topic_label_list.append(topic)
+    labels_file = datapath + 'topic_labels.csv'
+    topic_label_list = []
+    with open(labels_file, 'r') as csvfile:
+        labelreader = csv.reader(csvfile)
+        for row in labelreader:
+            print(row)
+            topic = ', '.join(row)
+            topic_label_list.append(topic)
 
 
     # assign topic label to each article
     topic_label = []
     for topic in df['topic']:
         #topic_label.append(topic_label_list[topic])
-        topic_label.append('topic{}'.format(topic))
+        topic_label.append(topic_label_list[topic])
 
     df['topic_label'] = topic_label
 

@@ -211,9 +211,9 @@ if __name__ == '__main__':
                      'www', 'ajc'])
 
     #stem = PorterStemmer().stem
-    stem = LancasterStemmer().stem
+    #stem = LancasterStemmer().stem
     #stem = SnowballStemmer('english').stem
-    #stem = WordNetLemmatizer().lemmatize
+    stem = WordNetLemmatizer().lemmatize
 
     # NMF is able to use tf-idf
     tfidf_vectorizer = TfidfVectorizer(tokenizer=tokenize, max_df=0.95, min_df=1, max_features=no_features, stop_words=stop_set)
@@ -233,11 +233,11 @@ if __name__ == '__main__':
 
     #Create word clouds
     #for each topic create a word cloud
-    # for topic_indx in range(len(H_nmf)):
-    #     file_name = plotpath + 'nmf_topic_{}_cloud.png'.format(topic_indx)
-    #     topic_word_cloud(topic_indx, 100)
-    #     plt.savefig(file_name, dpi=250)
-    #     plt.close()
+    for topic_indx in range(len(H_nmf)):
+        file_name = plotpath + 'nmf_topic_{}_cloud.png'.format(topic_indx)
+        topic_word_cloud(topic_indx, 100)
+        plt.savefig(file_name, dpi=250)
+        plt.close()
 
     df['topic'] = topics
 
