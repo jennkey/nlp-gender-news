@@ -1,0 +1,20 @@
+Denver Post    1052
+latimes        1039
+ajc             740
+Name: source, dtype: int64
+{'Denver Post': 1052, 'latimes': 1039, 'ajc': 740}
+All
+Male articles 1754
+Female articles 489
+AJC
+Male articles 421
+Female articles 136
+LA Times
+Male articles 679
+Female articles 172
+Denver Post
+Male articles 654
+Female articles 181
+['All', 'AJC', 'LA Times', 'Denver Post']
+[3.5869120654396727, 3.0955882352941178, 3.947674418604651, 3.613259668508287]
+[2.522367129434862, 2.378426966292135, 2.5728321230243485, 2.601169590643275]
