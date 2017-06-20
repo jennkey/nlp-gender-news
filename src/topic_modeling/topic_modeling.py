@@ -8,7 +8,8 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.stem.porter import PorterStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.stem.lancaster import LancasterStemmer
-from nltk.stem.snowball import SnowballStemmer
+from nltk.s
+from item.snowball import SnowballStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF
 from sklearn.decomposition import LatentDirichletAllocation
@@ -21,12 +22,30 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
 def make_dir(directory):
+    '''
+    If directory does not exist it creates one
+    INPUT:
+        directory: (str) Directory to be created if necessary (include path)
+    OUTPUT: NONE
+    '''
     if not os.path.exists(directory):
         os.makedirs(directory)
 
 def read_df(news_paper):
     '''
-    Doc string
+    Creates a dataframe for topic modeling based on user input
+    INPUT: news_paper (str) indicates which data sources to use
+           for topic modeling.
+           all = Use all newspapers
+           nest = Use a subset of articles based on previously created topics
+           female = Use only articles identified as majority female to create topics
+           male = Use only articles identified as majority male to create topics
+    OUTPUT: 
+             df,
+             datapath, 
+             plotpath, 
+             final_pickle
+
     '''
     if news_paper == 'all':
         datapath = '/Users/jenniferkey/galvanize/nlp-gender-news/data/all/'
@@ -78,13 +97,25 @@ def read_df(news_paper):
 
 
 
-# Closure over the tokenizer et al.
 def tokenize(text):
+    '''
+    Tokenizes given text
+    INPUT: text (str)
+    OUTPUT: stems (list of stemmed words)
+    '''
     tokens = tokenizer.tokenize(text)
     stems = [stem(token) for token in tokens if token not in stop_set]
     return stems
 
 def grid_number_topics(start, stop, increment):
+    '''
+    Iteratively builds NMF for different numbers of topics and produces the reconstruction error
+    plot
+    INPUT: start (int) - minimum number of topics to build
+           stop (int) -  maximum number of topics to build 
+           inc (int) - increments to increase number of topics by
+    OUTPUT:  plot of reconstruction errors
+    '''
     recon_error_list = []
     number_topics = []
     for i in range(start, stop, increment):
@@ -250,10 +281,6 @@ if __name__ == '__main__':
     #display_topics(lda, tf_feature_names, no_top_words)
     #display_topics_full(H_lda, W_lda, tf_feature_names, contents, no_top_words, no_top_documents)
 
-
-
-
-    # match up titles to topics
 
     #hand_labels = hand_label_topics(H, vocabulary)
     #

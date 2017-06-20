@@ -8,6 +8,8 @@ from source_by_topic_bubbles_simple import bubble_by_source_by_topic
 from bubble import all_topics_bubble
 from bar_ratio_chart import bar_ratio_chart
 from bar_ratio_chart import bubble_ratio_chart
+from bar_ratio_chart import bubble_ratio_chart_by_source
+
 
 # creates summary metrics for all sources
 
@@ -37,9 +39,9 @@ def summary_metrics(df, source):
     print('Female articles', female_articles)
     ratio_male_to_female_articles_list.append(male_articles/female_articles)
 
-def aggregate_by_topic(df_unagg, source):
-    df_agg = df_unagg[['topic_label', 'male_sentences', 'both_sentences', 'female_sentences']].groupby(['topic_label']).sum()
-    df_agg['topic_count'] = df_unagg[['topic_label']].groupby(['topic_label']).size()
+def aggregate_by_topic(df_unagg, source, level='topic_label'):
+    df_agg = df_unagg[[level, 'male_sentences', 'both_sentences', 'female_sentences']].groupby([level]).sum()
+    df_agg['topic_count'] = df_unagg[[level]].groupby([level]).size()
     count_all_sentences = df_agg['male_sentences'] + df_agg['female_sentences'] + df_agg['both_sentences']
     df_agg['male_percent'] = (df_agg['male_sentences'] + df_agg['both_sentences'])/count_all_sentences
     df_agg['female_percent'] = (df_agg['female_sentences'] + df_agg['both_sentences'])/ count_all_sentences
@@ -68,6 +70,8 @@ def count_source(df):
         else:
             source_dict[source] = 1
     print(source_dict)
+
+
 
 
 if __name__ == '__main__':
@@ -104,6 +108,7 @@ if __name__ == '__main__':
 
     # create male_percent and female_percent by topic by source
     df_agg_all = aggregate_by_topic(df, 'all')
+    df_agg_all_group = aggregate_by_topic(df, 'all', 'group')
     df_agg_ajc = aggregate_by_topic(ajc, 'AJC')
     df_agg_latimes = aggregate_by_topic(latimes, "LA Times")
     df_agg_denver_post = aggregate_by_topic(denver_post, "Denver Post")
@@ -121,4 +126,32 @@ if __name__ == '__main__':
     all_topics_bubble(df_agg_all_top10)
 
     bar_ratio_chart(df_agg_all.sort(['ratio'], ascending=False))
-    bubble_ratio_chart(df_agg_all.sort(['ratio'], ascending=False))
+    #create dataframe dropping the groups don't want to show
+    to_keep = ['Lifestyle', 'Politics', 'Business', 'Crime', 'Education', 'Real Estate', 'Sports']
+    df_agg_all_keygroups = df_agg_all_group[df_agg_all_group['group'].isin(to_keep)]
+    bubble_ratio_chart(df_agg_all_keygroups.sort(['ratio'], ascending=False), level='group', title='group')
+    bubble_ratio_chart(df_agg_all_group.sort(['ratio'], ascending=False), level='group', title='keygroups')
+
+    #group 1
+    group1 = ['Arts/Cultural', 'Books', 'Entertainment', 'Food', 'Gardening',
+              'Lifestyle', 'Music']
+    df_agg_ajc_1 = df_agg_ajc[df_agg_ajc['topic_label'].isin(group1)]
+    df_agg_latimes_1 = df_agg_latimes[df_agg_latimes['topic_label'].isin(group1)]
+    df_agg_denver_post_1 = df_agg_denver_post[df_agg_denver_post['topic_label'].isin(group1)]
+    bubble_ratio_chart_by_source(df_agg_ajc_1, df_agg_latimes_1, df_agg_denver_post_1, '1')
+
+    #group2
+    global group2
+    group2 = ['U.S. Politics', 'Local Politics/Government', 'International']
+    df_agg_ajc_2 = df_agg_ajc[df_agg_ajc['topic_label'].isin(group2)]
+    df_agg_latimes_2 = df_agg_latimes[df_agg_latimes['topic_label'].isin(group2)]
+    df_agg_denver_post_2 = df_agg_denver_post[df_agg_denver_post['topic_label'].isin(group2)]
+    bubble_ratio_chart_by_source(df_agg_ajc_2, df_agg_latimes_2, df_agg_denver_post_2, '2')
+
+    #group3
+    global group3
+    group3 = ['Business', 'Crime', 'Education', 'Real Estate']
+    df_agg_ajc_3 = df_agg_ajc[df_agg_ajc['topic_label'].isin(group3)]
+    df_agg_latimes_3 = df_agg_latimes[df_agg_latimes['topic_label'].isin(group3)]
+    df_agg_denver_post_3 = df_agg_denver_post[df_agg_denver_post['topic_label'].isin(group3)]
+    bubble_ratio_chart_by_source(df_agg_ajc_3, df_agg_latimes_3, df_agg_denver_post_3, '3')

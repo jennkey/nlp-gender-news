@@ -9,28 +9,27 @@ import unicodedata
 import re
 import string
 import matplotlib.pyplot as plt
-from gender_bubble_plot import gender_bubble_plot
+#from gender_bubble_plot import gender_bubble_plot
 from collections import Counter
 from nltk.corpus import stopwords
 import sys
 from nltk.tokenize.punkt    import PunktSentenceTokenizer
-
-#tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
-
 
 #Two lists  of words that are used when a man or woman is present, based on Danielle Sucher's https://github.com/DanielleSucher/Jailbreak-the-Patriarchy
 male_words=set(['guy','spokesman','chairman',"men's",'men','him',"he's",'his','boy','boyfriend','boyfriends','boys','brother','brothers','dad','dads','dude','father','fathers','fiance','gentleman','gentlemen','god','grandfather','grandpa','grandson','groom','he','himself','husband','husbands','king','male','man','mr','nephew','nephews','priest','prince','son','sons','uncle','uncles','waiter','widower','widowers'
 'hes', 'mens', 'mans'])
 female_words=set(['heroine','spokeswoman','chairwoman',"women's",'actress','women',"she's",'her','aunt','aunts','bride','daughter','daughters','female','fiancee','girl','girlfriend','girlfriends','girls','goddess','granddaughter','grandma','grandmother','herself','ladies','lady','lady','mom','moms','mother','mothers','mrs','ms','niece','nieces','priestess','princess','queens','she','sister','sisters','waitress','widow','widows','wife','wives','woman', 'shes', 'womans', 'womens'])
 
-# function to read records from mongo db
-def read():
-    df = pd.DataFrame(list(db.articles.find()))
-    return df
 
 def clean_text(text):
+    '''
+    Cleans  given text
+    INPUT: text (str)
+    OUTPUT:  text (str)
+    '''
     # remove 'by author'
     text = text.replace(r"By[^,]*","")
+
     # change contractions to their long form
     text = text.replace(r"what's", "what is ")
     text = text.replace(r"what's", "what is ")
@@ -50,6 +49,15 @@ def clean_text(text):
     return text
 
 def gender_the_sentence(sentence_words):
+    '''
+    Looks for male and female words from list.
+    If sentence has male words and female words then label as 'both'
+    If sentnece has male words only then label as 'male'
+    If sentence has female words only then label as 'female'
+    If sentence has no female nor male words then label as 'none'
+    INPUT: sentence_words (list) list of words from sentence
+    OUTPUT: gender (str) sentence label
+    '''
     mw_length=len(male_words.intersection(sentence_words))
     fw_length=len(female_words.intersection(sentence_words))
 
@@ -299,15 +307,15 @@ if __name__ == '__main__':
 
 
     #f, ax = plt.subplots(figsize=(6, 6))
-    df_agg = gender_bubble_plot(df)
-    file_name = plotpath + 'gender_bubble_plot.png'
-    plt.savefig(file_name, dpi=250)
-    plt.close()
+    # df_agg = gender_bubble_plot(df)
+    # file_name = plotpath + 'gender_bubble_plot.png'
+    # plt.savefig(file_name, dpi=250)
+    # plt.close()
 
     #top_male_female_words_by_topic(df)
 
     # Save the pickled dataframe for easy access later
-    agg_file = datapath + 'df_agg.pkl'
-    df_agg.to_pickle(agg_file)
+    # agg_file = datapath + 'df_agg.pkl'
+    # df_agg.to_pickle(agg_file)
     gendered_articles = datapath + 'df_gendered_articles.pkl'
     df.to_pickle(gendered_articles)
