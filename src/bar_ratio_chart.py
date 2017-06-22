@@ -90,10 +90,10 @@ def bubble_ratio_chart(df_agg, level='topic_label', title='none'):
     plotly.offline.plot(fig, filename=plot_filename)
 
 
-def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post, group):
-    #max_x = max(max(df_agg_ajc['ratio']), max(df_agg_latimes['ratio']), max(df_agg_denver_post['ratio'])) + 1
+def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post, level='topic_label', title='none'):
+    max_x = max(max(df_agg_ajc['ratio']), max(df_agg_latimes['ratio']), max(df_agg_denver_post['ratio'])) + 1
     trace0 = go.Scatter(
-        y=df_agg_ajc['topic_label'],
+        y=df_agg_ajc[level],
         x=df_agg_ajc['ratio'],
         mode='markers',
         marker=dict(
@@ -106,7 +106,7 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
 
      )
     trace1 = go.Scatter(
-         y=df_agg_latimes['topic_label'],
+         y=df_agg_latimes[level],
          x=df_agg_latimes['ratio'],
          mode='markers',
          marker=dict(
@@ -119,7 +119,7 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
 
       )
     trace2 = go.Scatter(
-        y=df_agg_denver_post['topic_label'],
+        y=df_agg_denver_post[level],
         x=df_agg_denver_post['ratio'],
         mode='markers',
         marker=dict(
@@ -132,7 +132,7 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
 
      )
     trace3 = go.Scatter(
-        y=df_agg_ajc['topic_label'],
+        y=df_agg_ajc[level],
         x=[1 for e in range(0,len(df_agg_ajc))],
         mode = 'lines',
         name = '1:1',
@@ -144,7 +144,7 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
     )
 
     trace4 = go.Scatter(
-        y=df_agg_ajc['topic_label'],
+        y=df_agg_ajc[level],
         x=[3.61 for e in range(0,len(df_agg_ajc)+1)],
         mode='lines',
         name = 'Overall 3.61 Male to Female Sentences',
@@ -169,6 +169,8 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
         pad=10),
         yaxis=dict(
            #title='Ratio Male Sentences to Female Sentences',
+           categoryarray = ['Sports', 'Politics', 'Business', 'Real Estate', 'Crime', 'Lifestyle', 'Education'],
+           categoryorder = 'array',
            autorange='reversed',
            tickangle=45,
            tickfont=dict(
@@ -177,11 +179,14 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
                color='black',
            ),
         ),
-       xaxis=dict(zeroline=True,range=[0, max_x],
+       xaxis=dict(
+
+           zeroline=True,range=[0, max_x],
            tickfont=dict(
                family='Heuristica',
                size=24,
-               color='black'
+               color='black',
+
            )),
        legend=dict(
         x=80,
@@ -196,5 +201,5 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
 
     data = [trace0, trace1, trace2, trace3, trace4]
     fig = go.Figure(data=data, layout=layout)
-    plot_filename = "/Users/jenniferkey/galvanize/nlp-gender-news/plots/bubbles_topics_sources_{}.html".format(group)
+    plot_filename = "/Users/jenniferkey/galvanize/nlp-gender-news/plots/bubbles_topics_sources_{}.html".format(title)
     plotly.offline.plot(fig, filename=plot_filename)

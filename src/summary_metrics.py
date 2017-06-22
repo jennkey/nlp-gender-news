@@ -72,6 +72,23 @@ def count_source(df):
     print(source_dict)
 
 
+def create_dummy_groups(row):
+    if row['group'] == 'Sports':
+        return 'A'
+    elif row['group'] == 'Politics':
+        return 'B'
+    elif row['group'] == 'Business':
+        return 'C'
+    elif row['group'] == 'Real Estate':
+        return 'D'
+    elif row['group'] == 'Crime':
+        return 'E'
+    elif row['group'] == 'Lifestyle':
+        return 'F'
+    elif row['group'] == 'Education':
+        return 'G'
+
+
 
 
 if __name__ == '__main__':
@@ -112,6 +129,9 @@ if __name__ == '__main__':
     df_agg_ajc = aggregate_by_topic(ajc, 'AJC')
     df_agg_latimes = aggregate_by_topic(latimes, "LA Times")
     df_agg_denver_post = aggregate_by_topic(denver_post, "Denver Post")
+    df_agg_ajc_group = aggregate_by_topic(ajc, 'AJC','group')
+    df_agg_latimes_group = aggregate_by_topic(latimes, "LA Times", 'group')
+    df_agg_denver_post_group = aggregate_by_topic(denver_post, "Denver Post", 'group')
 
     df_all_sources = df_agg_ajc.append(df_agg_latimes, ignore_index=True)
     df_all_sources = df_all_sources.append(df_agg_denver_post, ignore_index=True)
@@ -129,8 +149,22 @@ if __name__ == '__main__':
     #create dataframe dropping the groups don't want to show
     to_keep = ['Lifestyle', 'Politics', 'Business', 'Crime', 'Education', 'Real Estate', 'Sports']
     df_agg_all_keygroups = df_agg_all_group[df_agg_all_group['group'].isin(to_keep)]
-    bubble_ratio_chart(df_agg_all_keygroups.sort(['ratio'], ascending=False), level='group', title='group')
+
     bubble_ratio_chart(df_agg_all_group.sort(['ratio'], ascending=False), level='group', title='keygroups')
+
+
+    #Same groups by source
+    df_agg_ajc_keygroups = df_agg_ajc_group[df_agg_ajc_group['group'].isin(to_keep)]
+    df_agg_denver_post_keygroups = df_agg_denver_post_group[df_agg_denver_post_group['group'].isin(to_keep)]
+    df_agg_latimes_keygroups = df_agg_latimes_group[df_agg_latimes_group['group'].isin(to_keep)]
+
+    #Need to create a 'dummy' group that represents order in which to display topics
+    df_agg_ajc_keygroups['dummy_group'] = df_agg_ajc_keygroups.apply(lambda row: create_dummy_groups(row), axis=1)
+    df_agg_denver_post_keygroups['dummy_group'] = df_agg_denver_post_keygroups.apply(lambda row: create_dummy_groups(row), axis=1)
+    df_agg_latimes_keygroups['dummy_group'] = df_agg_latimes_keygroups.apply(lambda row: create_dummy_groups(row), axis=1)
+
+    bubble_ratio_chart_by_source(df_agg_ajc_keygroups, df_agg_latimes_keygroups, df_agg_denver_post_keygroups, level='group', title='keygroups')
+
 
     #group 1
     group1 = ['Arts/Cultural', 'Books', 'Entertainment', 'Food', 'Gardening',
@@ -138,7 +172,7 @@ if __name__ == '__main__':
     df_agg_ajc_1 = df_agg_ajc[df_agg_ajc['topic_label'].isin(group1)]
     df_agg_latimes_1 = df_agg_latimes[df_agg_latimes['topic_label'].isin(group1)]
     df_agg_denver_post_1 = df_agg_denver_post[df_agg_denver_post['topic_label'].isin(group1)]
-    bubble_ratio_chart_by_source(df_agg_ajc_1, df_agg_latimes_1, df_agg_denver_post_1, '1')
+    bubble_ratio_chart_by_source(df_agg_ajc_1, df_agg_latimes_1, df_agg_denver_post_1, title='1')
 
     #group2
     global group2
@@ -146,7 +180,7 @@ if __name__ == '__main__':
     df_agg_ajc_2 = df_agg_ajc[df_agg_ajc['topic_label'].isin(group2)]
     df_agg_latimes_2 = df_agg_latimes[df_agg_latimes['topic_label'].isin(group2)]
     df_agg_denver_post_2 = df_agg_denver_post[df_agg_denver_post['topic_label'].isin(group2)]
-    bubble_ratio_chart_by_source(df_agg_ajc_2, df_agg_latimes_2, df_agg_denver_post_2, '2')
+    bubble_ratio_chart_by_source(df_agg_ajc_2, df_agg_latimes_2, df_agg_denver_post_2, title='2')
 
     #group3
     global group3
@@ -154,4 +188,4 @@ if __name__ == '__main__':
     df_agg_ajc_3 = df_agg_ajc[df_agg_ajc['topic_label'].isin(group3)]
     df_agg_latimes_3 = df_agg_latimes[df_agg_latimes['topic_label'].isin(group3)]
     df_agg_denver_post_3 = df_agg_denver_post[df_agg_denver_post['topic_label'].isin(group3)]
-    bubble_ratio_chart_by_source(df_agg_ajc_3, df_agg_latimes_3, df_agg_denver_post_3, '3')
+    bubble_ratio_chart_by_source(df_agg_ajc_3, df_agg_latimes_3, df_agg_denver_post_3, title='3')
