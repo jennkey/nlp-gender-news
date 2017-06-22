@@ -34,12 +34,52 @@ Finally, just narrowing in on one of the main topics, politics, we can gain some
 ![politics-by-source](images/readme/politics-by-source.png)
 
 
+## THE PROCESS
+
+### Web-Scraping Methodology
+All sources were scraped using RSS feeds and directly input into MongoDB.
+
+Denver Post and LA Times:  Using the python package Scrapy, a scraping system was built that pulled articles from RSS feed.  The system utilizes multi-threading and 'politeness' to increase performance without overloading server.  Scrapy projects for [The Denver Post](src/denpost) and [LA Times](src/latimes) are located in their respective folders within src.
+
+AJC: RSS feed was not available so the python package 'newspaper' was utilized.  Code to pull the AJC articles is here: [ajc-scraping-code](src/pull_all_articles.py)
+
+
+### Data Cleaning
+
+All of the data sources needed to have the following done before it the articles could be used in analysis.
+1. Unicode removed
+2. Non-ascii code removed
+3. Changed contractions to their long form
+
+Additionally each source had unique challenges that needed to be addressed.  For example, The Denver Post would sometimes include the author of their article in the article itself, 'by John Smith,'.  These types of special circumstances were removed on a source by source bases using regular experssions.
+
+One python script can be used to clean all sources simply by referencing the source when running the [script](src/clean_data.py).  Example: python clean_data.py ajc
+
+### Topic modeling
+
+There are many steps to finding meaningful latent topics.  For all sources the following steps were performed.
+
+#### Removing Stop words
+
+When creating latent topics, it is useful to remove words which make sentences grammatically correct, but do not enhance the meaning of a sentences.  Python's NLTK provides a common list of stop words which were removed prior to topic modeling.  These words include words such as [a, an, and, are, as, be, by, for from...].  
+
+#### Stemming and lemmatizing
+
+Words such as 'run' and 'running' generally provide the same meaning in a sentence and ideally will be treated as the same word when creating the term frequency matrix needed for topic modeling.  Therefore it is common to stem or lemmatize the words in a corpus prior to topic modeling.  For this project 4 different stemmers and lemmatizers,  Porter Stemmer,
+WordNet Lemmatizer, Lancaster Stemmer and the Snowball Stemmer, were tested to determine which performed best on the articles for latent topic modeling.  The WordNet Lemmatizer was chosen for the final topic model as it provided the as good of topics as the Lancaster Stemmer while allowing an easier interpretation of the terms in each topic found.
+
+#### TF-IDF matrix
+
+Machines need numbers to
 
 
 
 
 
-The system
+
+
+
+
 
 
 References
@@ -53,22 +93,3 @@ CODE EXAMPLES
 https://github.com/malev/gender-detector
 http://nbviewer.jupyter.org/gist/nealcaren/5105037
 https://github.com/bbengfort/gender-words-fatale
-
-PROCESS
-
-SCRAPE ARTICLES
-
-CODE LOCATION: src/denpost, src/latimes, src/houston_chron, src/ajc
-
-
-
-1) Set up process from data extraction into MongoDB, to topic modeling to gender detection on all articles,
-   to results for Denver Post.
-   a) Scrapy code - completed
-   b) MongoDB feed - completed
-   c) Topic Modeling -  completed
-   d) Gender Detection - in progress
-   e) results - not started
-
- 2) Scrape articles for AJC - completed
- 3) Scrape articles for LaTime - completed
