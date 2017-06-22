@@ -1,0 +1,15 @@
+ takes as an input a term-document matrix and generates a set of topics that represent weighted sets of
+ co-occurring terms. The discovered topics form a basis that provides an efficient representation of
+ the original documents.
+
+ finds coourring terms and groups the documents based on the co-occurring terms.  These
+ groups form the simplified topics which best represent the articles as a
+ whole.
+
+NMF groups terms based on a linear combination of one another.  This differs from LDA which I also
+tried, which assumes a probablitistic approach to topic modeling.  NMF provided a better fit to my
+data.
+
+NMF is based on the assumption that the set of articles has a small set of hidden features.  NMF
+generates these features by finding cooccuring terms and weighting them to form simplifited groups
+representing the hidden features.

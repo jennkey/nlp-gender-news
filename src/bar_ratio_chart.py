@@ -19,7 +19,8 @@ def bar_ratio_chart(df_agg):
     plotly.offline.plot(data, filename=plot_filename)
 
 def bubble_ratio_chart(df_agg, level='topic_label', title='none'):
-    max_x = max(df_agg['ratio']) + 1
+    global max_x
+    max_x = max(df_agg['ratio']) + 2
     df_agg.sort(['ratio'], ascending=True)
     trace0 = go.Scatter(
         y=df_agg[level],
@@ -27,9 +28,10 @@ def bubble_ratio_chart(df_agg, level='topic_label', title='none'):
         mode='markers',
         marker=dict(
             size=df_agg['topic_count'],
-            color=['rgb(93, 164, 214)'],
+            #color=['rgb(93, 164, 214)'],
+            color=['#800000' for e in range(0,len(df_agg))],
             sizemode='area',
-            sizeref=1,
+            sizeref=.5,
             )
 
      )
@@ -38,10 +40,26 @@ def bubble_ratio_chart(df_agg, level='topic_label', title='none'):
         y=df_agg[level],
         x=[1 for e in range(0,len(df_agg))],
         mode = 'lines',
+        name = '1:1',
+        line = dict(
+            color = ('#006400'),
+            width = 2,
+            dash = 'dash')
+    )
+
+    trace2 = go.Scatter(
+        y=df_agg[level],
+        x=[3.61 for e in range(0,len(df_agg)+1)],
+        mode='lines',
+        name = 'Overall 3.61 Male to Female Sentences',
+        line = dict(
+            color = ('#FF4500'),
+            width = 2,
+            dash = 'dash')
     )
 
     layout = go.Layout(
-        title="Ratio Male to Female Sentences: All Sources",
+        #title="Ratio Male to Female Sentences: All Sources",
         showlegend=False,
         autosize=False,
         width=1000,
@@ -53,26 +71,34 @@ def bubble_ratio_chart(df_agg, level='topic_label', title='none'):
         t=50,
         pad=10),
         yaxis=dict(
-           autorange='reversed'),
-        xaxis=dict(zeroline=True, range=[0, max_x])
-
+           #title='Ratio Male Sentences to Female Sentences',
+           autorange='reversed',
+           tickfont=dict(
+               family='Heuristica',
+               size=26,
+               color='black')),
+        xaxis=dict(zeroline=True, range=[0, max_x],
+                       tickfont=dict(
+                       family='Heuristica',
+                       size=24,
+                       color='black'))
     )
 
-    data = [trace0, trace1]
+    data = [trace0, trace1, trace2]
     fig = go.Figure(data=data, layout=layout)
     plot_filename = "/Users/jenniferkey/galvanize/nlp-gender-news/plots/bubbles_topics_{}.html".format(title)
     plotly.offline.plot(fig, filename=plot_filename)
 
 
 def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post, group):
-    max_x = max(max(df_agg_ajc['ratio']), max(df_agg_latimes['ratio']), max(df_agg_denver_post['ratio'])) + 1
+    #max_x = max(max(df_agg_ajc['ratio']), max(df_agg_latimes['ratio']), max(df_agg_denver_post['ratio'])) + 1
     trace0 = go.Scatter(
         y=df_agg_ajc['topic_label'],
         x=df_agg_ajc['ratio'],
         mode='markers',
         marker=dict(
             size=df_agg_ajc['topic_count'],
-            color=['#66c2a5' for e in range(0,len(df_agg_ajc))],
+            color=['#9400D3' for e in range(0,len(df_agg_ajc))],
             sizemode='area',
             sizeref=.25,
             ),
@@ -85,9 +111,9 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
          mode='markers',
          marker=dict(
              size=df_agg_latimes['topic_count'],
-             color=['#fc8d62' for e in range(0,len(df_agg_ajc))],
+             color=['#FF4500' for e in range(0,len(df_agg_ajc))],
              sizemode='area',
-             sizeref=.25,
+             sizeref=.1,
              ),
           name="LA Times"
 
@@ -98,9 +124,9 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
         mode='markers',
         marker=dict(
             size=df_agg_denver_post['topic_count'],
-            color=['#8da0cb' for e in range(0,len(df_agg_ajc))],
+            color=['#2F4F4F' for e in range(0,len(df_agg_ajc))],
             sizemode='area',
-            sizeref=.25,
+            sizeref=.1,
             ),
         name="Denver Post"
 
@@ -109,34 +135,66 @@ def bubble_ratio_chart_by_source(df_agg_ajc, df_agg_latimes, df_agg_denver_post,
         y=df_agg_ajc['topic_label'],
         x=[1 for e in range(0,len(df_agg_ajc))],
         mode = 'lines',
+        name = '1:1',
+        line = dict(
+            color = ('#006400'),
+            width = 2,
+            dash = 'dash'),
+        showlegend=False
+    )
+
+    trace4 = go.Scatter(
+        y=df_agg_ajc['topic_label'],
+        x=[3.61 for e in range(0,len(df_agg_ajc)+1)],
+        mode='lines',
+        name = 'Overall 3.61 Male to Female Sentences',
+        line = dict(
+            color = ('#FF4500'),
+            width = 2,
+            dash = 'dash'),
         showlegend=False
     )
 
     layout = go.Layout(
-        title="Ratio Male to Female Sentences: All Sources",
+        #title="Ratio Male to Female Sentences: All Sources",
         showlegend=True,
         autosize=False,
-        width=750,
-        height=500,
+        width=1000,
+        height=600,
         margin=go.Margin(
-        l=205,
+        l=200,
         r=50,
         b=50,
         t=50,
         pad=10),
         yaxis=dict(
+           #title='Ratio Male Sentences to Female Sentences',
            autorange='reversed',
+           tickangle=45,
            tickfont=dict(
-               family='AbrilFatface',
-               size=18,
-               color='black'
+               family='Heuristica',
+               size=24,
+               color='black',
            ),
         ),
-       xaxis=dict(zeroline=True,range=[0, max_x])
-
+       xaxis=dict(zeroline=True,range=[0, max_x],
+           tickfont=dict(
+               family='Heuristica',
+               size=24,
+               color='black'
+           )),
+       legend=dict(
+        x=80,
+        y=1,
+        traceorder='normal',
+        font=dict(
+            family='Heuristica',
+            size=24,
+        )),
        )
 
-    data = [trace0, trace1, trace2, trace3]
+
+    data = [trace0, trace1, trace2, trace3, trace4]
     fig = go.Figure(data=data, layout=layout)
     plot_filename = "/Users/jenniferkey/galvanize/nlp-gender-news/plots/bubbles_topics_sources_{}.html".format(group)
     plotly.offline.plot(fig, filename=plot_filename)
