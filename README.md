@@ -68,9 +68,42 @@ When creating latent topics, it is useful to remove words which make sentences g
 Words such as 'run' and 'running' generally provide the same meaning in a sentence and ideally will be treated as the same word when creating the term frequency matrix needed for topic modeling.  Therefore it is common to stem or lemmatize the words in a corpus prior to topic modeling.  For this project 4 different stemmers and lemmatizers,  Porter Stemmer,
 WordNet Lemmatizer, Lancaster Stemmer and the Snowball Stemmer, were tested to determine which performed best on the articles for latent topic modeling.  The WordNet Lemmatizer was chosen for the final topic model as it provided the as good of topics as the Lancaster Stemmer while allowing an easier interpretation of the terms in each topic found.
 
-#### TF-IDF matrix
 
-Machines need numbers to
+#### Document Term Matrix
+
+Machines need numbers to analyze.  We can achieve this by creating a matrix which encapsulates the frequency of terms in that occur within the articles.  For this project I used two different term matrices, a count matrix, which simply counts the occurrence of each term within each document, and a Term-Frequency Inverse-Document-Frequency (TF-IDF) matrix.   The TF-IDF matrix is similar to the count matrix, capturing the frequency of a term within an article, but it offsets this by the frequency of the term across all the articles (the corpus).   The TF-IDF matrix thus allows us to not only capture the frequency of a word, but also the relative uniqueness of a word within the document.  A term that appears frequently within a specific article but not very often in other articles would get a higher value than a term that appears frequently within a specific article and also frequently in other articles.  SkLearn's TfidfVectorizer was utilized to create the TFIDF matrix.
+
+
+#### TOPIC MODELING
+
+In order to easily compare each news source Topic Modeling was applied to the entire corpus of articles.  Topic Modeling is a way of organizing the articles by identifying the underlying -'latent'- topics hidden in the corpus.   The simple intuition behind Topic Modeling is that documents exhibit multiple topics.  Every topic has some probability for containing each term.  The goal is to infer the underlying topic structure.
+
+Two approaches to Topic Modeling were utilized, Non-Negative Matrix Factorization and Latent Dirichlet Allocation.  
+
+##### Non-Negative Matrix Factorization (NMF)
+NMF uses Matrix Factorization to find the underlying topics within a corpus.  The basic idea is to decompose the TF-IDF matrix into two matrices, that when multiplied together reconstruct the TF-IDF matrix.  The three matrices together give us insight into the underlying topics.  
+
+Let V represent the TF-IDF matrix.  W and H are our factorized matrices which when multiplied together reconstruct the V.  W tells us how particular words relate to our latent factors (or topics) and H tells us how our latent factors relate to our articles.
+
+![NMF_matrices]
+(images/NMF_Matrix.png)
+
+A key assumption of NMF is that all coefficients are non-negative which helps interpretation of the topics.
+
+##### Latent Dirichlet Allocation (LDA)
+
+LDA is another algorithm for Topic Modeling and like NMF uses matrix factorization to find latent topics.  However LDA adds a Dirichlet prior on top of the data generating process.
+
+NMF provided more evenly distributed topics so NMF was chosen.  To evaluate the correct number of topics, the reconstruction error was evaluated for 1 to 150 topics.  Additionally word clouds were generated for each topic to examine the topics generated.  60 topics were finally chosen.   
+
+(insert more on topics)
+
+#### Gender Identification
+
+
+
+
+
 
 
 
